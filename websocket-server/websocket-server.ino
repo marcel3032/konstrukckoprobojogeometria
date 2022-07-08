@@ -4,8 +4,8 @@
 #include <ArduinoJson.h>
 
 // Replace with your network credentials
-const char* ssid = "TODO";
-const char* password = "TODO";
+extern const char* ssid;
+extern const char* password;
 
 const int ledPin = 22;
 extern const char index_html[];
