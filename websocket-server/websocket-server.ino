@@ -1,11 +1,19 @@
+/*
+  Steps:
+  1. Connect to the access point "ESP1"
+  2. Point your web browser to http://192.168.4.1/
+*/
+
 #include <WiFi.h>
+#include <WiFiClient.h>
+#include <WiFiAP.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
 
 // Replace with your network credentials
-extern const char* ssid;
-extern const char* password;
+const char* ssid = "ESP1";
+const char* password = "12345678";
 
 const int ledPin = 22;
 extern const char index_html[];
@@ -65,14 +73,18 @@ void setup(){
 
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
-  
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Connecting to WiFi..");
-  }
 
-  Serial.println(WiFi.localIP());
+  Serial.println();
+  Serial.println("Configuring access point...");
+
+  // You can remove the password parameter if you want the AP to be open.
+  WiFi.softAP(ssid, password);
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);
+  server.begin();
+  
+  Serial.println("Server started");
 
   initWebSocket();
 
