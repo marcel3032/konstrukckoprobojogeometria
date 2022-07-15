@@ -65,14 +65,14 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
   }
   
-  class Button extends PortOutput{
+  class OutputButton extends PortOutput{
 	constructor(port) {
 	  super(port);
 	  this.button = $e("button", [], this.el);
 	  this.button.innerHTML = "port: "+port;
 	  this.button.addEventListener('click', ev => {
 	    let send_value = 1 - this.value;
-	    websocket.send('{"port":'+this.port+', "analog":false, "value":'+send_value+'}');
+	    websocket.send('{"call_function": false, "port":'+this.port+', "analog":false, "value":'+send_value+'}');
 	  });
 	}
 	
@@ -91,7 +91,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 	  this.button.value = 0;
 	  this.button.addEventListener('input', ev => {
 	    let send_value = this.button.value;
-	    websocket.send('{"port":'+this.port+', "analog":true, "value":'+send_value+'}');
+	    websocket.send('{"call_function": false, "port":'+this.port+', "analog":true, "value":'+send_value+'}');
 	  });
 	}
 	
@@ -103,9 +103,24 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
   }
   
+  class FunctionButton {
+	  constructor(function_name){
+	  this.function_name = function_name;
+	  this.el = $e("div", [["class", "card"]], document.getElementById("content"));
+	  this.description = $e("div", [], this.el);
+	  
+	  this.button = $e("button", [], this.el);
+	  this.button.innerHTML = "function: "+function_name;
+	  this.button.addEventListener('click', ev => {
+	    websocket.send('{"call_function": true, "name":'+this.function_name+'}');
+	  });
+	}
+  }
+  
   var buttons = [];
-  buttons.push(new Button(22));
+  buttons.push(new OutputButton(22));
   buttons.push(new Slider(22));
+  buttons.push(new FunctionButton(0));
 </script>
 </body>
 </html>

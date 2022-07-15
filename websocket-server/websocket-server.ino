@@ -18,9 +18,19 @@ const char* password = "12345678";
 const int ledPin = 22;
 extern const char index_html[];
 
+void (*functions[4])();
+
+
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
+
+void doBlink(){
+  digitalWrite(ledPin, LOW);
+  delay(500);
+  digitalWrite(ledPin, HIGH);
+  delay(500);
+}
 
 void notifyClients(long port, long value) {
   ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": 22}");
@@ -33,15 +43,20 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     data[len] = 0;
     DynamicJsonDocument doc(1024);
     deserializeJson(doc, data);
-    long port = doc["port"];
-    bool analog = doc["analog"];
-    long value = doc["value"];
-    if(analog)
-      analogWrite(port, value);
-    else
-      digitalWrite(port, value);
-    
-    notifyClients(port, value);
+    bool call_function = doc["call_function"];
+    if(call_function){
+      long index = doc["name"];
+      (*functions[index])();
+    } else {
+      long port = doc["port"];
+      bool analog = doc["analog"];
+      long value = doc["value"];
+      if(analog)
+        analogWrite(port, value);
+      else
+        digitalWrite(port, value);  
+      notifyClients(port, value);
+    }
   }
 }
 
@@ -73,6 +88,8 @@ void setup(){
 
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
+
+  functions[0] = doBlink;
 
   Serial.println();
   Serial.println("Configuring access point...");
