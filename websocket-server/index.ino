@@ -119,6 +119,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   
   var buttons = [];
   buttons.push(new OutputButton(22));
+  buttons.push(new Slider(13));
   buttons.push(new Slider(22));
   buttons.push(new FunctionButton(0));
 </script>

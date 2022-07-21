@@ -33,7 +33,7 @@ void doBlink(){
 }
 
 void notifyClients(long port, long value) {
-  ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": 22}");
+  ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
   ws.textAll("{ \"type\": \"debug\", \"date\": "+String(millis())+", \"data\": \"prepol som ledku "+String(port)+": "+String(value)+"\"}");
 }
 
