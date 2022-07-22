@@ -1,3 +1,4 @@
+
 /*
   Steps:
   1. Connect to the access point "ESP1"
@@ -10,6 +11,7 @@
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+#include <analogWrite.h>
 
 // Replace with your network credentials
 const char* ssid = "ESP1";
