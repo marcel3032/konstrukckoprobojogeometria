@@ -104,6 +104,10 @@ a z tohoto pinu môžete čítať napätie (vstup).
 Takmer všetky piny môžu ovládať výstup nie len digitálne (vypnuté(0V)/zapnuté(3V)),
 ale aj analógovo (0-3V).
 
+.. figure:: images/esp32-pinout.png
+
+Pinout ESP32. Piny, ktoré sú označené ako PWM môžu byť ovládané aj analógovo.
+
 Na ESPčkach máte napájkovanú len zhruba polovicu nožičiek.
 V prípade, že by vám tento počet nestačil, môžete si dopájkovať aj vlastné,
 ale príďte nám to povedať.
