@@ -4,14 +4,15 @@ Ostatné a iné
 
 .. _ideas:
 
-Nápady, čo môžete programovať
-------------------------------
+Nápady, čo môžete programovať / ladiť
+--------------------------------------
 
 * funkcia, po ktorej spustení bude robot chodiť po čiare
 * ovládanie pre 2 ľudí
 * rozumné ovládanie motorom niečím ako joystick
 * funkcie na otočenie o 90 stupňov
 * chodenie po bludisku podľa dotykov
+* do súťaže krásy môžete použiť aj  :ref:`pípače, alebo LEDky <led>` 
 
 .. _knownIssues:
 

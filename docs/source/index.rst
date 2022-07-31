@@ -14,8 +14,9 @@ Obsah:
    
    intro
    components
-   code
    schemas
+   installation
+   code
    other
 
 Odkazy:
@@ -23,8 +24,6 @@ Odkazy:
 
 * :ref:`genindex`
 * :ref:`search`
-
-Check out the :doc:`usage` section for further information.
 
 .. note::
 

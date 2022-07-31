@@ -10,11 +10,13 @@ Robot nemusí byť plne autonómny, rátame s tým, že ho budete ovládať na d
 Súčiastky
 ----------
 
+Podrobnejšie informácie o súčiastkách a o spôsobe ich zapojenia sú opísané v časti :doc:`schemas`.
+
 Riadiaca jednotka
 ~~~~~~~~~~~~~~~~~~~~~~~
-Ako "počítač" pre robota bude slúžiť jedno esp32 (je to v zásade nejaký klon arduina).
+Ako "počítač" pre robota bude slúžiť jedno ESP32 (je to v zásade nejaký klon arduina).
 Oproti bežnému arduinu je táto doska vybavená wifi a bluetooth.
-Táto doska sa programuje v rovankom jazyku ako arduino
+Táto doska sa programuje v rovankom jazyku ako arduino.
 
 Motory a ich ovládanie
 ~~~~~~~~~~~~~~~~~~~~~~~
