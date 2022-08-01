@@ -14,7 +14,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   <div class="content" id="content"></div>
   <div>
 	  <table id="debug_log" border>
-		<tr><th>Time</th><th>Message</th></tr>
+		<tr><th>Time</th><th>Level</th><th>Message</th></tr>
 	  </table>
   </div>
 <script>
@@ -42,7 +42,8 @@ const char index_html[] PROGMEM = R"rawliteral(
 	  buttons.forEach( b => b.update(recieved_data));
     }
 	if(recieved_data.type=="debug"){
-      document.getElementById('debug_log').innerHTML += "<tr><td>"+recieved_data.date+"</td><td>"+recieved_data.data+"</td></tr>";
+	    console.log("<tr><td>"+recieved_data.date+"</td><td>"+recieved_data.level+"</td><td>"+recieved_data.data+"</td></tr>");
+      document.getElementById('debug_log').innerHTML += "<tr><td>"+recieved_data.date+"</td><td>"+recieved_data.level+"</td><td>"+recieved_data.data+"</td></tr>";
     }
   }
   
@@ -87,10 +88,10 @@ const char index_html[] PROGMEM = R"rawliteral(
   class Slider extends PortOutput {
 	constructor(port) {
 	  super(port);
-	  this.button = $e("input", [["type", "range"], ["min", "0"], ["max", "255"]], this.el);
-	  this.button.value = 0;
-	  this.button.addEventListener('input', ev => {
-	    let send_value = this.button.value;
+	  this.slider = $e("input", [["type", "range"], ["min", "0"], ["max", "255"]], this.el);
+	  this.slider.value = 0;
+	  this.slider.addEventListener('input', ev => {
+	    let send_value = this.slider.value;
 	    websocket.send('{"call_function": false, "port":'+this.port+', "analog":true, "value":'+send_value+'}');
 	  });
 	}
@@ -103,25 +104,30 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
   }
   
-  class FunctionButton {
-	  constructor(function_name){
-	  this.function_name = function_name;
+  class SliderFunctionButton {
+	constructor(function_index){
+	  this.function_index = function_index;
 	  this.el = $e("div", [["class", "card"]], document.getElementById("content"));
 	  this.description = $e("div", [], this.el);
 	  
+	  this.slider = $e("input", [["type", "range"], ["min", "0"], ["max", "2000"]], this.el);
+	  
 	  this.button = $e("button", [], this.el);
-	  this.button.innerHTML = "function: "+function_name;
+	  this.button.innerHTML = "function: "+function_index;
 	  this.button.addEventListener('click', ev => {
-	    websocket.send('{"call_function": true, "name":'+this.function_name+'}');
+	    console.log('{"call_function": true, "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}')
+	    websocket.send('{"call_function": true, "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}');
 	  });
 	}
+	
+	update(recieved_data){ }
   }
   
   var buttons = [];
   buttons.push(new OutputButton(22));
   buttons.push(new Slider(13));
   buttons.push(new Slider(22));
-  buttons.push(new FunctionButton(0));
+  buttons.push(new SliderFunctionButton(0));
 </script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 /*
-  Steps:
-  1. Connect to the access point "ESP1"
-  2. Point your web browser to http://192.168.4.1/
+  Web server is running at http://192.168.4.1/
 */
 
 #include <WiFi.h>
@@ -18,23 +16,24 @@ const char* password = "12345678";
 const int ledPin = 22;
 extern const char index_html[];
 
-void (*functions[4])();
-
+//debug levels
+String DEBUG = "DEBUG";
+String INFO = "INFO";
+String WARNING = "WARNING";
+String ERROR = "ERROR";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
-void doBlink(){
-  digitalWrite(ledPin, LOW);
-  delay(500);
-  digitalWrite(ledPin, HIGH);
-  delay(500);
-}
-
 void notifyClients(long port, long value) {
   ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
-  ws.textAll("{ \"type\": \"debug\", \"date\": "+String(millis())+", \"data\": \"prepol som ledku "+String(port)+": "+String(value)+"\"}");
+  sendDebugMessage(DEBUG, "prepol som ledku "+String(port)+": "+String(value));
+}
+
+void sendDebugMessage(String level, String message){
+  Serial.println("{ \"type\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
+  ws.textAll("{ \"type\": \"debug\", \"level\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
 }
 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -43,20 +42,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     data[len] = 0;
     DynamicJsonDocument doc(1024);
     deserializeJson(doc, data);
-    bool call_function = doc["call_function"];
-    if(call_function){
-      long index = doc["name"];
-      (*functions[index])();
-    } else {
-      long port = doc["port"];
-      bool analog = doc["analog"];
-      long value = doc["value"];
-      if(analog)
-        analogWrite(port, value);
-      else
-        digitalWrite(port, value);  
-      notifyClients(port, value);
-    }
+    handleMessage(doc);
   }
 }
 
@@ -65,6 +51,7 @@ void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType 
   switch (type) {
     case WS_EVT_CONNECT:
       Serial.printf("WebSocket client #%u connected from %s\n", client->id(), client->remoteIP().toString().c_str());
+      sendDebugMessage(DEBUG, "Client successfully connected");
       break;
     case WS_EVT_DISCONNECT:
       Serial.printf("WebSocket client #%u disconnected\n", client->id());
@@ -88,8 +75,6 @@ void setup(){
 
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
-
-  functions[0] = doBlink;
 
   Serial.println();
   Serial.println("Configuring access point...");
