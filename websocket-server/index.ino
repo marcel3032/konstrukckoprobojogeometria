@@ -36,13 +36,14 @@ const char index_html[] PROGMEM = R"rawliteral(
   }
   
   function onMessage(event) {
-    console.log(event.data);
     let recieved_data = JSON.parse(event.data);
     if(recieved_data.type=="message"){
 	  buttons.forEach( b => b.update(recieved_data));
     }
+	if(recieved_data.type=="input_changed"){
+	  port_inputs.forEach( p => p.update(recieved_data));
+    }
 	if(recieved_data.type=="debug"){
-	    console.log("<tr><td>"+recieved_data.date+"</td><td>"+recieved_data.level+"</td><td>"+recieved_data.data+"</td></tr>");
       document.getElementById('debug_log').innerHTML += "<tr><td>"+recieved_data.date+"</td><td>"+recieved_data.level+"</td><td>"+recieved_data.data+"</td></tr>";
     }
   }
@@ -123,11 +124,32 @@ const char index_html[] PROGMEM = R"rawliteral(
 	update(recieved_data){ }
   }
   
+  class PortInput{
+	constructor(port) {
+	  this.port = port;
+	  this.value = 0;
+	  this.el = $e("div", [["class", "card"]], document.getElementById("content"));
+	  this.el.innerHTML = "Port: "+port;
+	  this.description = $e("div", [], this.el);
+	}
+	
+	update(recieved_data){
+    if(recieved_data.port==this.port){
+			this.value = recieved_data.data;
+			this.description.innerHTML = "current state: "+this.value;
+		}
+	}
+  }
+  
   var buttons = [];
   buttons.push(new OutputButton(22));
   buttons.push(new Slider(13));
   buttons.push(new Slider(22));
   buttons.push(new SliderFunctionButton(0));
+  
+  var port_inputs = [];
+  port_inputs.push(new PortInput(32));
+  port_inputs.push(new PortInput(33));
 </script>
 </body>
 </html>

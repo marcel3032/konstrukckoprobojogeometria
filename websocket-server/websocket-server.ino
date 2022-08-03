@@ -26,13 +26,17 @@ String ERROR = "ERROR";
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
-void notifyClients(long port, long value) {
+void notifyClientsMessage(long port, long value) {
   ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
-  sendDebugMessage(DEBUG, "prepol som ledku "+String(port)+": "+String(value));
+  sendDebugMessage(DEBUG, "na vystup portu "+String(port)+"som dal: "+String(value));
+}
+
+void notifyClientsInput(long port, int value) {
+  ws.textAll("{ \"type\": \"input_changed\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
+  sendDebugMessage(DEBUG, "na vstupe portu "+String(port)+" som precital: "+String(value));
 }
 
 void sendDebugMessage(String level, String message){
-  Serial.println("{ \"type\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
   ws.textAll("{ \"type\": \"debug\", \"level\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
 }
 
@@ -75,6 +79,7 @@ void setup(){
 
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
+  setInputsAsInput();
 
   Serial.println();
   Serial.println("Configuring access point...");
@@ -100,4 +105,5 @@ void setup(){
 
 void loop() {
   ws.cleanupClients();
+  checkInputs();
 }

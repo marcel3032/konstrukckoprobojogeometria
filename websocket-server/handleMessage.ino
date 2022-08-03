@@ -27,6 +27,6 @@ void handleMessage(DynamicJsonDocument doc){
       analogWrite(port, value);
     else
       digitalWrite(port, value);  
-    notifyClients(port, value);
+    notifyClientsMessage(port, value);
   }
 }
