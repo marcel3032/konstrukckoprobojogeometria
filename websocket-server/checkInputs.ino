@@ -1,4 +1,4 @@
-int ports[] = {32,33};
+int ports[] = {};
 long last_sent = 0;
 long min_dif = 500;
 

@@ -74,7 +74,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 	  this.button.innerHTML = "port: "+port;
 	  this.button.addEventListener('click', ev => {
 	    let send_value = 1 - this.value;
-	    websocket.send('{"call_function": false, "port":'+this.port+', "analog":false, "value":'+send_value+'}');
+	    websocket.send('{"call_function": false, "port1":'+this.port+', "method":"digital", "value":'+send_value+'}');
 	  });
 	}
 	
@@ -93,7 +93,30 @@ const char index_html[] PROGMEM = R"rawliteral(
 	  this.slider.value = 0;
 	  this.slider.addEventListener('input', ev => {
 	    let send_value = this.slider.value;
-	    websocket.send('{"call_function": false, "port":'+this.port+', "analog":true, "value":'+send_value+'}');
+	    websocket.send('{"call_function": false, "port1":'+this.port+', "method":"analog", "value":'+send_value+'}');
+	  });
+	}
+	
+    update(recieved_data){
+		if(recieved_data.port==this.port){
+			this.description.innerHTML = "current state: "+recieved_data.data;
+			this.value = recieved_data.data;
+		}
+	}
+  }
+  
+  class MotorSlider extends PortOutput {
+	constructor(port1, port2) {
+	  super(undefined);
+	  this.port1 = port1;
+	  this.port2 = port2;
+	  this.el.innerHTML = `Ports: ${port1} and ${port2}`;
+	  this.slider = $e("input", [["type", "range"], ["min", "-256"], ["max", "256"]], this.el);
+	  this.slider.value = 0;
+	  this.slider.addEventListener('input', ev => {
+	    let send_value = this.slider.value;
+		console.log('{"call_function": false, "port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+	    websocket.send('{"call_function": false, "port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
 	  });
 	}
 	
@@ -146,6 +169,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   buttons.push(new Slider(13));
   buttons.push(new Slider(22));
   buttons.push(new SliderFunctionButton(0));
+  buttons.push(new MotorSlider(13,22));
   
   var port_inputs = [];
   port_inputs.push(new PortInput(32));

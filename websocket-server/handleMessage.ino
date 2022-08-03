@@ -16,17 +16,25 @@ void (*functions[4])(String) = {doBlink};
 void handleMessage(DynamicJsonDocument doc){
   bool call_function = doc["call_function"];
   if(call_function){
-    long index = doc["index"];
+    int index = doc["index"];
     String args = doc["args"];
     (*functions[index])(args);
   } else {
-    long port = doc["port"];
-    bool analog = doc["analog"];
-    long value = doc["value"];
-    if(analog)
-      analogWrite(port, value);
-    else
-      digitalWrite(port, value);  
-    notifyClientsMessage(port, value);
+    int port = doc["port1"];
+    String method = doc["method"];
+    int value = doc["value"];
+    if(method.compareTo("analog")==0){
+      analogWrite(port, 255-value);
+      notifyClientsMessage(port, value);
+    }
+    if(method.compareTo("digital")==0){
+      digitalWrite(port, value);
+      notifyClientsMessage(port, value);
+    }
+    if(method.compareTo("motor")==0){
+      int port2 = doc["port2"];
+      motorWrite(port, port2, value); 
+    }
+    
   }
 }

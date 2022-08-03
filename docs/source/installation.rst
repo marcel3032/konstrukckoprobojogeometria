@@ -72,14 +72,27 @@ V Arduino IDE si otvoríte (`File -> Open`) hocijaký súbor z priečinka `webso
 IDE otvorí všetky súbory (na kartách hore), ktoré sú v tomto priečinku a následne pri kompilovaní
 a nahrávaní kódu do ESPčka spojí všetky súbory, ktoré sú v tomto priečinku do jedného veľkého súboru.
 
-Súbor :download:`websocket-server.ino <../../websocket-server/websocket-server.ino>` obsahuje funkcie,
-ktoré ovládajú server, wifi, a podobne.
-Súbor :download:`index.ino <../../websocket-server/index.ino>` obsahuje jedinú stringovú premennú,
-ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
-aby sa *dala* rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
-aby sa s tým rozumnejšie pracovalo
-(ak neviete, čo to znamená, a prečo by ste to tak chceli robiť, alebo tak,
-tak s tým samozrejme môžete pracovať čisto v Arduino IDE).
+Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:
+
+* Súbor :download:`websocket-server.ino <../../websocket-server/websocket-server.ino>`
+  obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.
+* Súbor :download:`index.ino <../../websocket-server/index.ino>` obsahuje jedinú stringovú premennú,
+  ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
+  aby sa *dala* rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
+  aby sa s tým rozumnejšie pracovalo
+  (ak neviete, čo to znamená, a prečo by ste to tak chceli robiť, alebo tak,
+  tak s tým samozrejme môžete pracovať čisto v Arduino IDE).
+* Súbor :download:`handleMessage.ino <../../websocket-server/handleMessage.ino>` obsahuje funkciu,
+  ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
+  nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.
+  
+  Okrem toho, je tento súbor odporúčané miesto, kam by ste chceli dávať funkcie,
+  ktoré chcete volať z diaľkového ovládania robota (mobilu).
+  Obsahuje tiež pole týchto funkcií (viac o tom v časti :ref:`esp32`)
+* Súbor :download:`checkInputs.ino <../../websocket-server/checkInputs.ino>`
+  obsahuje pole portov, ktoré slúžia ako vstupné. Obsahuje funkciu na počiatočné
+  nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
+  (Opäť viac o tom v časti :ref:`esp32`.)
 
 Pre začiatok v kóde zmeňte jedinú vec:
 v súbore `websocket-server` na riadkoch 15 a 16 názov vašej wifi (premenná `ssid`)

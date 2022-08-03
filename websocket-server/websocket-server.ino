@@ -28,7 +28,7 @@ AsyncWebSocket ws("/ws");
 
 void notifyClientsMessage(long port, long value) {
   ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
-  sendDebugMessage(DEBUG, "na vystup portu "+String(port)+"som dal: "+String(value));
+  sendDebugMessage(DEBUG, "na vystup portu "+String(port)+" som dal: "+String(value));
 }
 
 void notifyClientsInput(long port, int value) {
@@ -38,6 +38,25 @@ void notifyClientsInput(long port, int value) {
 
 void sendDebugMessage(String level, String message){
   ws.textAll("{ \"type\": \"debug\", \"level\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
+}
+
+void motorWrite(int port1, int port2, int value){
+  if(value<-255){
+    sendDebugMessage(WARNING, "Value for motor write was lower than -255, setting output to -255");
+    value = -255;
+  }
+  if(value>255){
+    sendDebugMessage(WARNING, "Value for motor write was greater than +255, setting output to 255");
+    value = 255;
+  }
+  
+  int value1 = 255-(int)max(0, value);
+  analogWrite(port1, value1);
+  notifyClientsMessage(port1, value1);
+
+  int value2 = 255+(int)min(0, value);
+  analogWrite(port2, value2);
+  notifyClientsMessage(port2, value2);
 }
 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
