@@ -2,8 +2,8 @@
 Prvý program, nastavenie IDE
 ============================================
 
-V tejto časti opíšeme to, ako nastaviť Arduino IDE, ktoré knižnice si stiahnuť a tak,
-ako spustiť prvý program a vôbec, ako programovať niečo pre ESPčko.
+V tejto časti opíšeme to, ako nastaviť Arduino IDE, ktoré knižnice si stiahnuť,
+ako spustiť prvý program a také.
 
 .. _ide:
 
@@ -12,8 +12,8 @@ Arduino IDE
 
 Na programovanie ESPčka budeme používať Arduino IDE.
 Stiahnuť si ho môžete napríklad `na oficiálnej stránke Arduina <https://www.arduino.cc/en/software>`__.
-Marcel používal v1.8.19 a kompilácia trvala pomerne dlho,
-Krto sa nebál pre-released v2.0, kde sa to kompilovalo kratšie,
+Marcel používal v1.8.19 a táto verzia má menej features,
+Krto sa nebál pre-released v2.0,
 ale ešte to nie je stabilná verzia, tak asi je to na vás.
 
 Najprv si potrebujete nainštalovať ESP32 dosku a knižnice.
@@ -49,10 +49,10 @@ Potrebujete si stiahnuť tieto knižnice:
   
   ArduinoJson vľavo pre v2, vpravo pre v1.*
 
-A v prípade, že sa vám nepodarí spustiť kód pre ESP32, a bude vám hlásiť,
-že to nepozná `analogWrite`, tak potrebujete si ešte stiahnuť knižnicu na `analogWrite`,
-`napríklad túto <https://github.com/erropix/ESP32_AnalogWrite.git>`__.
-Tiež je stiahnutá :download:`v tomto repozitári <../../libs/ESP32_AnalogWrite-master.zip>`.
+* V prípade, že sa vám nepodarí spustiť kód pre ESP32, a bude vám hlásiť,
+  že to nepozná `analogWrite`, tak potrebujete si ešte stiahnuť knižnicu na `analogWrite`,
+  `napríklad túto <https://github.com/erropix/ESP32_AnalogWrite.git>`__.
+  Tiež je stiahnutá :download:`v tomto repozitári <../../libs/ESP32_AnalogWrite-master.zip>`.
 
 Nastavenie dosky
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,6 +76,8 @@ Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:
 
 * Súbor :download:`websocket-server.ino <../../websocket-server/websocket-server.ino>`
   obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.
+  Jediná vec, ktorú by ste v tomto súbore mali
+  za normálnych okolností meniť je názov wifi a heslo k nej.
 * Súbor :download:`index.ino <../../websocket-server/index.ino>` obsahuje jedinú stringovú premennú,
   ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
   aby sa *dala* rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
@@ -86,16 +88,16 @@ Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:
   ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
   nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.
   
-  Okrem toho, je tento súbor odporúčané miesto, kam by ste chceli dávať funkcie,
+  Okrem toho, je tento súbor odporúčané miesto, kam by ste mohli chcieť dávať funkcie,
   ktoré chcete volať z diaľkového ovládania robota (mobilu).
   Obsahuje tiež pole týchto funkcií (viac o tom v časti :ref:`esp32`)
 * Súbor :download:`checkInputs.ino <../../websocket-server/checkInputs.ino>`
-  obsahuje pole portov, ktoré slúžia ako vstupné. Obsahuje funkciu na počiatočné
+  obsahuje pole portov, ktoré slúžia ako vstupné porty. Obsahuje funkciu na počiatočné
   nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
   (Opäť viac o tom v časti :ref:`esp32`.)
 
 Pre začiatok v kóde zmeňte jedinú vec:
-v súbore `websocket-server` na riadkoch 15 a 16 názov vašej wifi (premenná `ssid`)
+v súbore `websocket-server` na riadkoch 13 a 14 názov vašej wifi (premenná `ssid`)
 a heslo k nej (premenná `password`).
 Heslo asi chce mať viac ako 8 znakov a meno chce byť unikátne voči ostatným družinkám.
 Po pripojení ESPčka, vybratí správneho portu, a urobení všetkých vecí :ref:`v časti vyššie<ide>` môžete
@@ -117,7 +119,7 @@ Teraz si zoberte mobil/notebook/niečo a nájdite wifi s názvom aký ste nastav
 Mobil/notebook bude možno protestovať, že táto sieť nemá internet, ale odkliknite,
 že je to v pohode, aj tak k nej chcete ostať pripojený.
 
-Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome je v pohode),
+Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome/firefox je celkom v pohode),
 a otvorte :code:`192.168.4.1` (to je adresa ESPčka).
 
 Zobrazí Vám jeden slider, ktorý ovláda port `22`.
@@ -131,7 +133,7 @@ V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne roz
 (Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
 pozri :ref:`knownIssues`)
 
-Krátky tutoriál
--------------------
+Krátky tutoriál / Hello world
+-------------------------------
 
 TODO
