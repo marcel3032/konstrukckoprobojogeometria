@@ -53,7 +53,7 @@ Nie že by sa Vám malo niečo stať (je to iba 5V),
 ale môže sa Vám stať, že sa dotknete odizolovaným káblom niečoho,
 čo zoskratujete, a zničíte tým tú súčiastku (a veľa náhradných nemáme :D)</p></li>
 <li><p>ak niečo začne smrdieť ako spálený plast alebo dymiť, tak odpojte baterku :D</p></li>
-<li><p>v kľude si po sebe vždy skontrolujte to, čo ste zapojili</p></li>
+<li><p>v kľude si po sebe skontrolujte to, čo ste zapojili</p></li>
 <li><p>v prípade, že chcete niečo zapojiť inak ako je tu popísané,
 tak to radšej najprv skonzultujte s vedúcimi</p></li>
 </ul>
@@ -64,16 +64,18 @@ tak to radšej najprv skonzultujte s vedúcimi</p></li>
 K tomuto obvodu sú pripojené oba motory (káble k motorom už máte napájkované).
 Do tohoto obvodu sa pripája priamo baterka.
 Každý motor je ovládaný dvomi vstupnými pinmi.
-Tieto piny sa k ESPčku pripájajú káblami samica-samica.
+Tieto piny sa k ESPčku pripájajú káblami samica-samica.</p>
+<p>Technické detaily (ak nepochopíte, nevadí):
 Ak je na jeden z nich pripojené vstupné napätie, tak sa motor točí na jednu stranu, ak na druhý,
-tak na druhú – pomerne priamočiare.</p>
+tak na druhú – pomerne priamočiare. Čím menšie napätie je na vstupe, tým pomalšie sa točí.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Vyhnite sa tomu, že bude na oba piny ovládania pripojené nenulové napätie,
 keďže tým môžete zoskratovať motor driver. (Možno je voči tomu odolný, ale neskúšali sme to).</p>
 <p>Najjednoduchší spôsob, ako sa tomu vyhnúť je ovládať motor pomocou našich funkcií.</p>
 <p>Motor driver by mal ostať počas celého používania v zásade studený, takže ak je teplý až horúci,
-tak asi máte niečo zle zapojené, najpravdepodobnejšie sú to skratované prívodné káble k motorom.</p>
+tak asi máte niečo zle zapojené, najpravdepodobnejšie sú to skratované prívodné káble k motorom.
+Možno sa odlomili, alebo také niečo.</p>
 </div>
 </div>
 <div class="section" id="senzor-ciary">
@@ -81,8 +83,8 @@ tak asi máte niečo zle zapojené, najpravdepodobnejšie sú to skratované pr�
 <p>Tento senzor funguje tak, že má dve ledky.
 Jedna z nich svieti a druhá svetlo prijíma (a zisťuje, že koľko svetla prijala).
 Ak tento senzor svieti pred robota na zem, ktorá je celá biela,
-tak sa pomerne veľa svetla odrazí z papiera naspäť.
-V prípade, že je pred senzorom čierna páska, tak sa naspäť odrazí len pomerne málo svetla.</p>
+tak sa pomerne veľa svetla odrazí naspäť.
+V prípade, že je pred senzorom zem čierna, tak sa naspäť odrazí len pomerne málo svetla.</p>
 <p>Tento senzor teda robí to, že v prípade, že je množstvo svetla,
 ktoré ledka prijíma menšie ako nejaká hranica, tak vráti na výstup hodnotu 0 (0V),
 inak vracia hodnotu 1 (vstupné napätie).
@@ -120,7 +122,8 @@ Schematicky je to pomerne pekne znázornené na boku vypínača.</p>
 <h2>ESP32<a class="headerlink" href="#esp32" title="Permalink to this headline">¶</a></h2>
 <p>Z vrchnej časti je konektor na USB, ktorým prepájate ESPčko s počítačom.
 Vedľa neho je reset tlačítko - to reštartuje ESPčko, teda sa program,
-ktorý je na ňom nahratý začne vykonávať od začiatku.
+ktorý je na ňom nahratý začne vykonávať od začiatku
+(rozbehnutie servera a wifi môže po reštarte trvať približne 30s).
 Vedľa neho sa nachádza napájací konektor, na pripojenie baterky.</p>
 <p>Po obvode sa nachádza veľa™ pinov.
 Väčšina z nich je vstupno-výstupná, teda týmto pinom môžete niečo ovládať (výstup),
@@ -133,27 +136,27 @@ ale aj analógovo (0-3V).</p>
 <p>Pinout ESP32. Piny, ktoré sú označené ako PWM môžu byť ovládané aj analógovo.</p>
 <p>Na ESPčkach máte napájkovanú len zhruba polovicu nožičiek.
 V prípade, že by vám tento počet nestačil, môžete si dopájkovať aj vlastné,
-ale príďte nám to povedať.</p>
+ale príďte nám to povedať (minimálne preto, že máme pájkovačku :D).</p>
 </div>
 <div class="section" id="spolocne-plus-a-minus-zem">
 <h2>Spoločné plus a mínus(zem)<a class="headerlink" href="#spolocne-plus-a-minus-zem" title="Permalink to this headline">¶</a></h2>
-<p>Keďže pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory čiary a vypínače),
+<p>Keďže je pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory čiary a vypínače),
 tak máte vyrobený “rebrík”, na ktorý viete pripojiť mínus(zem)
 alebo plus z ESPčka a následne na tento rebrík popripájať všetko čo potrebujete.</p>
 </div>
 <div class="section" id="prepajanie-suciastok">
 <h2>Prepájanie súčiastok<a class="headerlink" href="#prepajanie-suciastok" title="Permalink to this headline">¶</a></h2>
-<p>Máte k dispozícii káble samica-samica na prepájanie takých pinov ako sú na ESPčku,
-káble, ktoré majú na jednom konci 4,8mm faston konektor a na druhom samicu,
+<p>Máte k dispozícii káble samica-samica na prepájanie takých pinov ako sú na ESPčku.
+Potom máte káble, ktoré majú na jednom konci 4,8mm faston konektor a na druhom samicu,
 ktorá pasuje na piny ESPčka (na prepájanie <a class="reference internal" href="#dotyk"><span class="std std-ref">mikrospínačov z ESPčkom</span></a>).</p>
 <p>Ak by ste potrebovali nejaké káble pripájkovať, alebo ste mali málo káblov,
-tak sú k dispozícii pájkovačky.</p>
+tak máme pájkovačku/y.</p>
 <p>Bez dovolenia vedúcich káble nestrihajte, nech už by ste chceli robiť čokoľvek.</p>
 </div>
 <div class="section" id="ledky-a-pipac">
 <span id="led"></span><h2>LEDky a pípač<a class="headerlink" href="#ledky-a-pipac" title="Permalink to this headline">¶</a></h2>
 <p>V prípade, že chcete, môžete použiť aj niekoľko LEDiek a pípač.</p>
-<p>TODO</p>
+<p>TODO schéma a také</p>
 </div>
 </div>
 

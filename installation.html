@@ -42,14 +42,14 @@
             
   <div class="section" id="prvy-program-nastavenie-ide">
 <h1>Prvý program, nastavenie IDE<a class="headerlink" href="#prvy-program-nastavenie-ide" title="Permalink to this headline">¶</a></h1>
-<p>V tejto časti opíšeme to, ako nastaviť Arduino IDE, ktoré knižnice si stiahnuť a tak,
-ako spustiť prvý program a vôbec, ako programovať niečo pre ESPčko.</p>
+<p>V tejto časti opíšeme to, ako nastaviť Arduino IDE, ktoré knižnice si stiahnuť,
+ako spustiť prvý program a také.</p>
 <div class="section" id="arduino-ide">
 <span id="ide"></span><h2>Arduino IDE<a class="headerlink" href="#arduino-ide" title="Permalink to this headline">¶</a></h2>
 <p>Na programovanie ESPčka budeme používať Arduino IDE.
 Stiahnuť si ho môžete napríklad <a class="reference external" href="https://www.arduino.cc/en/software">na oficiálnej stránke Arduina</a>.
-Marcel používal v1.8.19 a kompilácia trvala pomerne dlho,
-Krto sa nebál pre-released v2.0, kde sa to kompilovalo kratšie,
+Marcel používal v1.8.19 a táto verzia má menej features,
+Krto sa nebál pre-released v2.0,
 ale ešte to nie je stabilná verzia, tak asi je to na vás.</p>
 <p>Najprv si potrebujete nainštalovať ESP32 dosku a knižnice.</p>
 <div class="section" id="instalacia-esp32-dosky">
@@ -75,11 +75,11 @@ Marcelovi fungovala iba v2.0.2, s novšími mal problémy.</p>
 </div>
 <p>ArduinoJson vľavo pre v2, vpravo pre v1.*</p>
 </li>
-</ul>
-<p>A v prípade, že sa vám nepodarí spustiť kód pre ESP32, a bude vám hlásiť,
+<li><p>V prípade, že sa vám nepodarí spustiť kód pre ESP32, a bude vám hlásiť,
 že to nepozná <cite>analogWrite</cite>, tak potrebujete si ešte stiahnuť knižnicu na <cite>analogWrite</cite>,
 <a class="reference external" href="https://github.com/erropix/ESP32_AnalogWrite.git">napríklad túto</a>.
-Tiež je stiahnutá <a class="reference download internal" download="" href="_downloads/fa4841118d0acd3a597115b587d87003/ESP32_AnalogWrite-master.zip"><code class="xref download docutils literal notranslate"><span class="pre">v</span> <span class="pre">tomto</span> <span class="pre">repozitári</span></code></a>.</p>
+Tiež je stiahnutá <a class="reference download internal" download="" href="_downloads/fa4841118d0acd3a597115b587d87003/ESP32_AnalogWrite-master.zip"><code class="xref download docutils literal notranslate"><span class="pre">v</span> <span class="pre">tomto</span> <span class="pre">repozitári</span></code></a>.</p></li>
+</ul>
 </div>
 <div class="section" id="nastavenie-dosky">
 <h3>Nastavenie dosky<a class="headerlink" href="#nastavenie-dosky" title="Permalink to this headline">¶</a></h3>
@@ -98,7 +98,9 @@ a nahrávaní kódu do ESPčka spojí všetky súbory, ktoré sú v tomto prieč
 <p>Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:</p>
 <ul>
 <li><p>Súbor <a class="reference download internal" download="" href="_downloads/a53a74183ea84561e272b0e229a55545/websocket-server.ino"><code class="xref download docutils literal notranslate"><span class="pre">websocket-server.ino</span></code></a>
-obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.</p></li>
+obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.
+Jediná vec, ktorú by ste v tomto súbore mali
+za normálnych okolností meniť je názov wifi a heslo k nej.</p></li>
 <li><p>Súbor <a class="reference download internal" download="" href="_downloads/f706b007868c799abea6cea042e2b8a6/index.ino"><code class="xref download docutils literal notranslate"><span class="pre">index.ino</span></code></a> obsahuje jedinú stringovú premennú,
 ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
 aby sa <em>dala</em> rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
@@ -108,17 +110,17 @@ tak s tým samozrejme môžete pracovať čisto v Arduino IDE).</p></li>
 <li><p>Súbor <a class="reference download internal" download="" href="_downloads/97cd1b5e468d665cfa028fce129160f4/handleMessage.ino"><code class="xref download docutils literal notranslate"><span class="pre">handleMessage.ino</span></code></a> obsahuje funkciu,
 ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
 nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.</p>
-<p>Okrem toho, je tento súbor odporúčané miesto, kam by ste chceli dávať funkcie,
+<p>Okrem toho, je tento súbor odporúčané miesto, kam by ste mohli chcieť dávať funkcie,
 ktoré chcete volať z diaľkového ovládania robota (mobilu).
 Obsahuje tiež pole týchto funkcií (viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>)</p>
 </li>
 <li><p>Súbor <a class="reference download internal" download="" href="_downloads/8d26fdd3fa8f78197754908db1addea7/checkInputs.ino"><code class="xref download docutils literal notranslate"><span class="pre">checkInputs.ino</span></code></a>
-obsahuje pole portov, ktoré slúžia ako vstupné. Obsahuje funkciu na počiatočné
+obsahuje pole portov, ktoré slúžia ako vstupné porty. Obsahuje funkciu na počiatočné
 nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
 (Opäť viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>.)</p></li>
 </ul>
 <p>Pre začiatok v kóde zmeňte jedinú vec:
-v súbore <cite>websocket-server</cite> na riadkoch 15 a 16 názov vašej wifi (premenná <cite>ssid</cite>)
+v súbore <cite>websocket-server</cite> na riadkoch 13 a 14 názov vašej wifi (premenná <cite>ssid</cite>)
 a heslo k nej (premenná <cite>password</cite>).
 Heslo asi chce mať viac ako 8 znakov a meno chce byť unikátne voči ostatným družinkám.
 Po pripojení ESPčka, vybratí správneho portu, a urobení všetkých vecí <a class="reference internal" href="#ide"><span class="std std-ref">v časti vyššie</span></a> môžete
@@ -133,7 +135,7 @@ a na Serial monitore by sa malo objaviť niečo takéto:</p>
 <p>Teraz si zoberte mobil/notebook/niečo a nájdite wifi s názvom aký ste nastavili a pripojte sa k nej.
 Mobil/notebook bude možno protestovať, že táto sieť nemá internet, ale odkliknite,
 že je to v pohode, aj tak k nej chcete ostať pripojený.</p>
-<p>Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome je v pohode),
+<p>Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome/firefox je celkom v pohode),
 a otvorte <code class="code docutils literal notranslate"><span class="pre">192.168.4.1</span></code> (to je adresa ESPčka).</p>
 <p>Zobrazí Vám jeden slider, ktorý ovláda port <cite>22</cite>.
 Zobrazia sa vám tiež dve tlačítka, jedno ovláda port <cite>22</cite> a druhé spúšťa nejakú funkciu.</p>
@@ -143,8 +145,8 @@ Zobrazia sa vám tiež dve tlačítka, jedno ovláda port <cite>22</cite> a druh
 (Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
 pozri <a class="reference internal" href="other.html#knownissues"><span class="std std-ref">Known issues</span></a>)</p>
 </div>
-<div class="section" id="kratky-tutorial">
-<h2>Krátky tutoriál<a class="headerlink" href="#kratky-tutorial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kratky-tutorial-hello-world">
+<h2>Krátky tutoriál / Hello world<a class="headerlink" href="#kratky-tutorial-hello-world" title="Permalink to this headline">¶</a></h2>
 <p>TODO</p>
 </div>
 </div>
@@ -165,7 +167,7 @@ pozri <a class="reference internal" href="other.html#knownissues"><span class="s
 </ul>
 </li>
 <li><a class="reference internal" href="#spustenie-prveho-programu">Spustenie prvého programu</a></li>
-<li><a class="reference internal" href="#kratky-tutorial">Krátky tutoriál</a></li>
+<li><a class="reference internal" href="#kratky-tutorial-hello-world">Krátky tutoriál / Hello world</a></li>
 </ul>
 </li>
 </ul>

@@ -19,12 +19,12 @@ Nápady, čo môžete programovať / ladiť
 Known issues
 --------------
 
-Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. nefungujú tak, ako by ste očakávali:
+Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefungujú tak, ako by ste očakávali:
 
 * V prípade, že výstupný pin ESPčka ovládate ako :code:`analogWrite`, 
   tak už ho neviete ovládať ako :code:`digitalWrite` (treba resetnúť ESPčko).
 * Piny, ktoré sú označené ako ADC2 nie je možné použiť na čítanie analógového vstupu
-  (:code:`analogRead`) v prípade, že sa používa wifi. :code:`digitalRead` na týchto pinoch funguje vždy.
+  (:code:`analogRead`) v prípade, že sa používa wifi. :code:`digitalRead` by na týchto pinoch malo fungovať vždy.
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none

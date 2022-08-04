@@ -22,7 +22,6 @@ Obsah:
 Odkazy:
 --------
 
-* :ref:`genindex`
 * :ref:`search`
 
 .. note::
