@@ -105,13 +105,21 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
   }
   
-  class MotorSlider extends PortOutput {
+  class MotorSlider {
 	constructor(port1, port2) {
-	  super(undefined);
+	  this.el = $e("div", [["class", "card"]], document.getElementById("content"));
+	  this.el.innerHTML = `Ports: ${port1} and ${port2}`;
+	  
+	  this.description1 = $e("div", [], this.el);
+	  this.description1.innerHTML = `port ${port1}: N/A`;
+	  
+	  this.description2 = $e("div", [], this.el);
+	  this.description2.innerHTML = `port ${port2}: N/A`;
+	  
 	  this.port1 = port1;
 	  this.port2 = port2;
-	  this.el.innerHTML = `Ports: ${port1} and ${port2}`;
-	  this.slider = $e("input", [["type", "range"], ["min", "-256"], ["max", "256"]], this.el);
+	  
+	  this.slider = $e("input", [["type", "range"], ["min", "-255"], ["max", "255"]], this.el);
 	  this.slider.value = 0;
 	  this.slider.addEventListener('input', ev => {
 	    let send_value = this.slider.value;
@@ -121,10 +129,10 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
 	
     update(recieved_data){
-		if(recieved_data.port==this.port){
-			this.description.innerHTML = "current state: "+recieved_data.data;
-			this.value = recieved_data.data;
-		}
+		if(recieved_data.port==this.port1)
+			this.description1.innerHTML = `port ${this.port1}: ${recieved_data.data}`;
+		if(recieved_data.port==this.port2)
+			this.description2.innerHTML = `port ${this.port2}: ${recieved_data.data}`;
 	}
   }
   
