@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Technické info, ovládanie a popis robota &#8212; KPG 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Schémy zapojenia" href="schemas.html" />
+    <link rel="prev" title="Úvod" href="intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="schemas.html" title="Schémy zapojenia"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Úvod"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="technicke-info-ovladanie-a-popis-robota">
+<h1>Technické info, ovládanie a popis robota<a class="headerlink" href="#technicke-info-ovladanie-a-popis-robota" title="Permalink to this headline">¶</a></h1>
+<p>Robot nemusí byť plne autonómny, rátame s tým, že ho budete ovládať na diaľku.
+Čo sa týka autonómnosti, môžete si ale naprogramovať čo len chcete.</p>
+<div class="section" id="suciastky">
+<span id="id1"></span><h2>Súčiastky<a class="headerlink" href="#suciastky" title="Permalink to this headline">¶</a></h2>
+<p>Podrobnejšie informácie o súčiastkách a o spôsobe ich zapojenia sú opísané v časti <a class="reference internal" href="schemas.html"><span class="doc">Schémy zapojenia</span></a>.</p>
+<div class="section" id="riadiaca-jednotka">
+<h3>Riadiaca jednotka<a class="headerlink" href="#riadiaca-jednotka" title="Permalink to this headline">¶</a></h3>
+<p>Ako “počítač” pre robota bude slúžiť jedno ESP32 (je to v zásade nejaký klon arduina).
+Oproti bežnému arduinu je táto doska vybavená wifi a bluetooth.
+Táto doska sa programuje v rovankom jazyku ako arduino.</p>
+</div>
+<div class="section" id="motory-a-ich-ovladanie">
+<h3>Motory a ich ovládanie<a class="headerlink" href="#motory-a-ich-ovladanie" title="Permalink to this headline">¶</a></h3>
+<p>K dispozícii máte 2 motory aj s ich riadiacou jednotkou, ktorá vie ovládať 2 motory, obomi smermi.</p>
+</div>
+<div class="section" id="vstupne-senzory">
+<h3>Vstupné senzory<a class="headerlink" href="#vstupne-senzory" title="Permalink to this headline">¶</a></h3>
+<p>K dispozícii máte 4 senzory čiary, ktoré vracajú digitálnu hodnotu,
+či je odrazené svetlo väčšie ako nejaká prahová hodnota.
+Táto hodnota je nastavovaná trimrom, ktorý je na senzore.
+Tiež máte k dispozícii 4 mikrospínače, pomocou ktorých viete zisťovať dotyk s prekážkou.</p>
+</div>
+<div class="section" id="sasi-a-stavebne-prvky">
+<h3>Šasí a stavebné prvky<a class="headerlink" href="#sasi-a-stavebne-prvky" title="Permalink to this headline">¶</a></h3>
+<p>Tiež dostanete niekoľko dosiek s M3 dierami.
+Na pripájjanie súčiastok kolmo na tieto dosky dosta také. Lká, tiež s M3 dierami.
+Väčšina súčastok má M3 alebo M2.5 dieru, takže to je odporúčaný spôsob ich spájania.
+Máte k dispozícii dlhé a krátke M3 šrouby, veľkoplošné podložky, matky a zopár samoistných matiek.</p>
+</div>
+<div class="section" id="napajanie">
+<h3>Napájanie<a class="headerlink" href="#napajanie" title="Permalink to this headline">¶</a></h3>
+<p>Celý robot bude napájaný jednou jednočlánkovou Li-Ion baterkou.
+Túto baterku zvláda dobíjať samotné espčko v prípade,
+že je zároveň pripojené usb káblom k zdroju napätia.</p>
+</div>
+</div>
+<div class="section" id="ovladanie-robota">
+<span id="ovladanie"></span><h2>Ovládanie robota<a class="headerlink" href="#ovladanie-robota" title="Permalink to this headline">¶</a></h2>
+<p>Na espčku, ktoré je na robotovi je spustený webserver.
+Po pripojení sa na tento server cez (napr.) mobil sa načíta stránka,
+pomocou ktoreje je možné ovládať robota.
+Od robota do pripojeného zariadenia (mobilu) sú posielané jednak nejaké informácie o tom,
+ako robot nastavil nejaký výstup, rôzne pomocné výpisy,
+pomocou ktorých môžete robota ladiť a tiež aj informácie zo vstupných senzorov (čiary alebo dotyku).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Technické info, ovládanie a popis robota</a><ul>
+<li><a class="reference internal" href="#suciastky">Súčiastky</a><ul>
+<li><a class="reference internal" href="#riadiaca-jednotka">Riadiaca jednotka</a></li>
+<li><a class="reference internal" href="#motory-a-ich-ovladanie">Motory a ich ovládanie</a></li>
+<li><a class="reference internal" href="#vstupne-senzory">Vstupné senzory</a></li>
+<li><a class="reference internal" href="#sasi-a-stavebne-prvky">Šasí a stavebné prvky</a></li>
+<li><a class="reference internal" href="#napajanie">Napájanie</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ovladanie-robota">Ovládanie robota</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Úvod</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="schemas.html"
+                        title="next chapter">Schémy zapojenia</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/components.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="schemas.html" title="Schémy zapojenia"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Úvod"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Trojsten.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

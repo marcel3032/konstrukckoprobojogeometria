@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ostatné a iné &#8212; KPG 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Podrobnejší popis kódu" href="code.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="code.html" title="Podrobnejší popis kódu"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ostatne-a-ine">
+<h1>Ostatné a iné<a class="headerlink" href="#ostatne-a-ine" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="napady-co-mozete-programovat-ladit">
+<span id="ideas"></span><h2>Nápady, čo môžete programovať / ladiť<a class="headerlink" href="#napady-co-mozete-programovat-ladit" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>funkcia, po ktorej spustení bude robot chodiť po čiare</p></li>
+<li><p>ovládanie pre 2 ľudí</p></li>
+<li><p>rozumné ovládanie motorom niečím ako joystick</p></li>
+<li><p>funkcie na otočenie o 90 stupňov</p></li>
+<li><p>chodenie po bludisku podľa dotykov</p></li>
+<li><p>do súťaže krásy môžete použiť aj  <a class="reference internal" href="schemas.html#led"><span class="std std-ref">pípače, alebo LEDky</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="known-issues">
+<span id="knownissues"></span><h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<p>Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. nefungujú tak, ako by ste očakávali:</p>
+<ul>
+<li><p>V prípade, že výstupný pin ESPčka ovládate ako <code class="code docutils literal notranslate"><span class="pre">analogWrite</span></code>,
+tak už ho neviete ovládať ako <code class="code docutils literal notranslate"><span class="pre">digitalWrite</span></code> (treba resetnúť ESPčko).</p></li>
+<li><p>Piny, ktoré sú označené ako ADC2 nie je možné použiť na čítanie analógového vstupu
+(<code class="code docutils literal notranslate"><span class="pre">analogRead</span></code>) v prípade, že sa používa wifi. <code class="code docutils literal notranslate"><span class="pre">digitalRead</span></code> na týchto pinoch funguje vždy.</p></li>
+<li><p>V prípade, že v serial monitore dostanete takýto error:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rst:0x10 (RTCWDT_RTC_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1324
+ho 0 tail 12 room 4
+load:0x40078000,len:13508
+load:0x40080400,len:3604
+entry 0x400805f0
+ets Jun  8 2016 00:22:57
+</pre></div>
+</div>
+<p>Tak je to zrejme spôsobené pošahaným napájaním, skúste ESPčko natvrdo odpojiť od akéhokoľvek zdroja energie a opäť pripojiť.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ostatné a iné</a><ul>
+<li><a class="reference internal" href="#napady-co-mozete-programovat-ladit">Nápady, čo môžete programovať / ladiť</a></li>
+<li><a class="reference internal" href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="previous chapter">Podrobnejší popis kódu</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/other.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="code.html" title="Podrobnejší popis kódu"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Trojsten.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

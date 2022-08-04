@@ -22,6 +22,8 @@ String INFO = "INFO";
 String WARNING = "WARNING";
 String ERROR = "ERROR";
 
+const int MAX_VALUE = 255;
+
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
@@ -41,22 +43,22 @@ void sendDebugMessage(String level, String message){
 }
 
 void motorWrite(int port1, int port2, int value){
-  if(value<-255){
+  if(value < -MAX_VALUE){
     sendDebugMessage(WARNING, "Value for motor write was lower than -255, setting output to -255");
-    value = -255;
+    value = -MAX_VALUE;
   }
-  if(value>255){
+  if(value > MAX_VALUE){
     sendDebugMessage(WARNING, "Value for motor write was greater than +255, setting output to 255");
-    value = 255;
+    value = MAX_VALUE;
   }
   
-  int value1 = 255-(int)max(0, value);
+  int value1 = MAX_VALUE-(int)max(0, value);
   analogWrite(port1, value1);
-  notifyClientsMessage(port1, value1);
+  notifyClientsMessage(port1, MAX_VALUE-value1);
 
-  int value2 = 255+(int)min(0, value);
+  int value2 = MAX_VALUE+(int)min(0, value);
   analogWrite(port2, value2);
-  notifyClientsMessage(port2, value2);
+  notifyClientsMessage(port2, MAX_VALUE-value2);
 }
 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {

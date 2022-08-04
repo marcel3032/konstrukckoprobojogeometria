@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prvý program, nastavenie IDE &#8212; KPG 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Podrobnejší popis kódu" href="code.html" />
+    <link rel="prev" title="Schémy zapojenia" href="schemas.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="code.html" title="Podrobnejší popis kódu"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="schemas.html" title="Schémy zapojenia"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="prvy-program-nastavenie-ide">
+<h1>Prvý program, nastavenie IDE<a class="headerlink" href="#prvy-program-nastavenie-ide" title="Permalink to this headline">¶</a></h1>
+<p>V tejto časti opíšeme to, ako nastaviť Arduino IDE, ktoré knižnice si stiahnuť a tak,
+ako spustiť prvý program a vôbec, ako programovať niečo pre ESPčko.</p>
+<div class="section" id="arduino-ide">
+<span id="ide"></span><h2>Arduino IDE<a class="headerlink" href="#arduino-ide" title="Permalink to this headline">¶</a></h2>
+<p>Na programovanie ESPčka budeme používať Arduino IDE.
+Stiahnuť si ho môžete napríklad <a class="reference external" href="https://www.arduino.cc/en/software">na oficiálnej stránke Arduina</a>.
+Marcel používal v1.8.19 a kompilácia trvala pomerne dlho,
+Krto sa nebál pre-released v2.0, kde sa to kompilovalo kratšie,
+ale ešte to nie je stabilná verzia, tak asi je to na vás.</p>
+<p>Najprv si potrebujete nainštalovať ESP32 dosku a knižnice.</p>
+<div class="section" id="instalacia-esp32-dosky">
+<h3>Inštalácia ESP32 dosky<a class="headerlink" href="#instalacia-esp32-dosky" title="Permalink to this headline">¶</a></h3>
+<p>Otvorte si Board Manager. Pre v1.* vyzerá zhruba takto:</p>
+<img alt="_images/board-manager.png" src="_images/board-manager.png" />
+<p>a počkajte, kým si dotiahne updaty z internetu.</p>
+<p>Následne dajte hľadať dosku <cite>esp32</cite> a nainštalujte si ho.
+Marcelovi fungovala iba v2.0.2, s novšími mal problémy.</p>
+<img alt="_images/board-esp32.png" src="_images/board-esp32.png" />
+<p>Verzia 2.0 by ho mala otvoriť hneď na začiatku a teda vyberiete ESP32.</p>
+<img alt="_images/board-esp32-v2.png" src="_images/board-esp32-v2.png" />
+</div>
+<div class="section" id="instalacia-potrebnych-kniznic">
+<h3>Inštalácia potrebných knižníc<a class="headerlink" href="#instalacia-potrebnych-kniznic" title="Permalink to this headline">¶</a></h3>
+<p>Potrebujete si stiahnuť tieto knižnice:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/me-no-dev/ESPAsyncWebServer.git">ESPAsyncWebServer</a>. Je tiež aj <a class="reference download internal" download="" href="_downloads/a34a84b1db9c5cf4346bfe4e27cf99c0/ESPAsyncWebServer-master.zip"><code class="xref download docutils literal notranslate"><span class="pre">v</span> <span class="pre">tomto</span> <span class="pre">repozitári</span></code></a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/me-no-dev/AsyncTCP.git">AsyncTCP</a> Je tiež aj <a class="reference download internal" download="" href="_downloads/5915a9155e8e8c2381aa8cd0886caec0/AsyncTCP-master.zip"><code class="xref download docutils literal notranslate"><span class="pre">v</span> <span class="pre">tomto</span> <span class="pre">repozitári</span></code></a>.</p></li>
+<li><p>ArduinoJson. Táto knižnica sa dá stiahnuť cez Library Manager a nemusíte ju sťahovať ako <cite>.zip</cite>.</p>
+<div class="figure align-default">
+<img alt="_images/arduinoJson.png" src="_images/arduinoJson.png" />
+</div>
+<p>ArduinoJson vľavo pre v2, vpravo pre v1.*</p>
+</li>
+</ul>
+<p>A v prípade, že sa vám nepodarí spustiť kód pre ESP32, a bude vám hlásiť,
+že to nepozná <cite>analogWrite</cite>, tak potrebujete si ešte stiahnuť knižnicu na <cite>analogWrite</cite>,
+<a class="reference external" href="https://github.com/erropix/ESP32_AnalogWrite.git">napríklad túto</a>.
+Tiež je stiahnutá <a class="reference download internal" download="" href="_downloads/fa4841118d0acd3a597115b587d87003/ESP32_AnalogWrite-master.zip"><code class="xref download docutils literal notranslate"><span class="pre">v</span> <span class="pre">tomto</span> <span class="pre">repozitári</span></code></a>.</p>
+</div>
+<div class="section" id="nastavenie-dosky">
+<h3>Nastavenie dosky<a class="headerlink" href="#nastavenie-dosky" title="Permalink to this headline">¶</a></h3>
+<p>Pre nás fungovalo nasledovné nastavenie dosky:</p>
+<img alt="_images/arduino-ide-board-settings.png" src="_images/arduino-ide-board-settings.png" />
+<p>Malo by stačiť nastaviť správny <cite>Board</cite> na <cite>ESP32 Dev Module</cite> a zvyšok sa nastavil sám.
+Budete si musieť nastaviť <cite>Port</cite> na ten, kde bude ESPčko reálne pripojené
+(proste vám to ponúkne zhruba jedinú možnosť a vy u vyberiete).</p>
+</div>
+</div>
+<div class="section" id="spustenie-prveho-programu">
+<h2>Spustenie prvého programu<a class="headerlink" href="#spustenie-prveho-programu" title="Permalink to this headline">¶</a></h2>
+<p>V Arduino IDE si otvoríte (<cite>File -&gt; Open</cite>) hocijaký súbor z priečinka <cite>websocket-server</cite>.
+IDE otvorí všetky súbory (na kartách hore), ktoré sú v tomto priečinku a následne pri kompilovaní
+a nahrávaní kódu do ESPčka spojí všetky súbory, ktoré sú v tomto priečinku do jedného veľkého súboru.</p>
+<p>Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:</p>
+<ul>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/a53a74183ea84561e272b0e229a55545/websocket-server.ino"><code class="xref download docutils literal notranslate"><span class="pre">websocket-server.ino</span></code></a>
+obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.</p></li>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/f706b007868c799abea6cea042e2b8a6/index.ino"><code class="xref download docutils literal notranslate"><span class="pre">index.ino</span></code></a> obsahuje jedinú stringovú premennú,
+ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
+aby sa <em>dala</em> rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
+aby sa s tým rozumnejšie pracovalo
+(ak neviete, čo to znamená, a prečo by ste to tak chceli robiť, alebo tak,
+tak s tým samozrejme môžete pracovať čisto v Arduino IDE).</p></li>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/97cd1b5e468d665cfa028fce129160f4/handleMessage.ino"><code class="xref download docutils literal notranslate"><span class="pre">handleMessage.ino</span></code></a> obsahuje funkciu,
+ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
+nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.</p>
+<p>Okrem toho, je tento súbor odporúčané miesto, kam by ste chceli dávať funkcie,
+ktoré chcete volať z diaľkového ovládania robota (mobilu).
+Obsahuje tiež pole týchto funkcií (viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>)</p>
+</li>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/8d26fdd3fa8f78197754908db1addea7/checkInputs.ino"><code class="xref download docutils literal notranslate"><span class="pre">checkInputs.ino</span></code></a>
+obsahuje pole portov, ktoré slúžia ako vstupné. Obsahuje funkciu na počiatočné
+nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
+(Opäť viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>.)</p></li>
+</ul>
+<p>Pre začiatok v kóde zmeňte jedinú vec:
+v súbore <cite>websocket-server</cite> na riadkoch 15 a 16 názov vašej wifi (premenná <cite>ssid</cite>)
+a heslo k nej (premenná <cite>password</cite>).
+Heslo asi chce mať viac ako 8 znakov a meno chce byť unikátne voči ostatným družinkám.
+Po pripojení ESPčka, vybratí správneho portu, a urobení všetkých vecí <a class="reference internal" href="#ide"><span class="std std-ref">v časti vyššie</span></a> môžete
+tlačítkom <cite>Upload</cite> program nahrať do espčka.</p>
+<img alt="_images/upload.png" src="_images/upload.png" />
+<p>Tento upload Marcelovi vo v1.8 trval trochu dlhšie (čítaj: tak 1-2 minúty), takže počas neho si môžete
+vpravo hore otvoriť <cite>Serial monitor</cite>.</p>
+<img alt="_images/monitor.png" src="_images/monitor.png" />
+<p>Po spustení by mala začať svietiť LEDka na ESPčku,
+a na Serial monitore by sa malo objaviť niečo takéto:</p>
+<img alt="_images/server-init.png" src="_images/server-init.png" />
+<p>Teraz si zoberte mobil/notebook/niečo a nájdite wifi s názvom aký ste nastavili a pripojte sa k nej.
+Mobil/notebook bude možno protestovať, že táto sieť nemá internet, ale odkliknite,
+že je to v pohode, aj tak k nej chcete ostať pripojený.</p>
+<p>Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome je v pohode),
+a otvorte <code class="code docutils literal notranslate"><span class="pre">192.168.4.1</span></code> (to je adresa ESPčka).</p>
+<p>Zobrazí Vám jeden slider, ktorý ovláda port <cite>22</cite>.
+Zobrazia sa vám tiež dve tlačítka, jedno ovláda port <cite>22</cite> a druhé spúšťa nejakú funkciu.</p>
+<p>Teraz keď ťukáte na tlačítko, ktoré ovláda port, tak by sa mala ledka na ESPčku zapínať a vypínať.</p>
+<p>V prípade, že ťuknete na tlačítko, ktoré spúšťa funkciu, tak by sa mala ledka na chvíľu rozsvietiť a zhasnúť.</p>
+<p>V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne rozsvecovať a zhasínať.
+(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
+pozri <a class="reference internal" href="other.html#knownissues"><span class="std std-ref">Known issues</span></a>)</p>
+</div>
+<div class="section" id="kratky-tutorial">
+<h2>Krátky tutoriál<a class="headerlink" href="#kratky-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Prvý program, nastavenie IDE</a><ul>
+<li><a class="reference internal" href="#arduino-ide">Arduino IDE</a><ul>
+<li><a class="reference internal" href="#instalacia-esp32-dosky">Inštalácia ESP32 dosky</a></li>
+<li><a class="reference internal" href="#instalacia-potrebnych-kniznic">Inštalácia potrebných knižníc</a></li>
+<li><a class="reference internal" href="#nastavenie-dosky">Nastavenie dosky</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spustenie-prveho-programu">Spustenie prvého programu</a></li>
+<li><a class="reference internal" href="#kratky-tutorial">Krátky tutoriál</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="schemas.html"
+                        title="previous chapter">Schémy zapojenia</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="next chapter">Podrobnejší popis kódu</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="code.html" title="Podrobnejší popis kódu"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="schemas.html" title="Schémy zapojenia"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Trojsten.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

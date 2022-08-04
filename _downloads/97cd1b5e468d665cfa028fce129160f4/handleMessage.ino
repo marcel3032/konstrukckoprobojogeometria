@@ -24,11 +24,11 @@ void handleMessage(DynamicJsonDocument doc){
     String method = doc["method"];
     int value = doc["value"];
     if(method.compareTo("analog")==0){
-      analogWrite(port, 255-value);
+      analogWrite(port, MAX_VALUE-value);
       notifyClientsMessage(port, value);
     }
     if(method.compareTo("digital")==0){
-      digitalWrite(port, value);
+      digitalWrite(port, 1-value);
       notifyClientsMessage(port, value);
     }
     if(method.compareTo("motor")==0){

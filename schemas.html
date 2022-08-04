@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Schémy zapojenia &#8212; KPG 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Prvý program, nastavenie IDE" href="installation.html" />
+    <link rel="prev" title="Technické info, ovládanie a popis robota" href="components.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Prvý program, nastavenie IDE"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="components.html" title="Technické info, ovládanie a popis robota"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="schemy-zapojenia">
+<h1>Schémy zapojenia<a class="headerlink" href="#schemy-zapojenia" title="Permalink to this headline">¶</a></h1>
+<p>Ukážková schéma zapojenia je tu:</p>
+<img alt="_images/circuit.png" src="_images/circuit.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Všeobecné rady k káblovaniu:</p>
+<ul class="simple">
+<li><p>ak naozaj neviete čo robíte, tak neprepájajte káble kým sú pod napätím.
+Nie že by sa Vám malo niečo stať (je to iba 5V),
+ale môže sa Vám stať, že sa dotknete odizolovaným káblom niečoho,
+čo zoskratujete, a zničíte tým tú súčiastku (a veľa náhradných nemáme :D)</p></li>
+<li><p>ak niečo začne smrdieť ako spálený plast alebo dymiť, tak odpojte baterku :D</p></li>
+<li><p>v kľude si po sebe vždy skontrolujte to, čo ste zapojili</p></li>
+<li><p>v prípade, že chcete niečo zapojiť inak ako je tu popísané,
+tak to radšej najprv skonzultujte s vedúcimi</p></li>
+</ul>
+</div>
+<div class="section" id="motory">
+<h2>Motory<a class="headerlink" href="#motory" title="Permalink to this headline">¶</a></h2>
+<p>V ľavej časti schémy je obvod, ktorý slúži na ovládanie motora.
+K tomuto obvodu sú pripojené oba motory (káble k motorom už máte napájkované).
+Do tohoto obvodu sa pripája priamo baterka.
+Každý motor je ovládaný dvomi vstupnými pinmi.
+Tieto piny sa k ESPčku pripájajú káblami samica-samica.
+Ak je na jeden z nich pripojené vstupné napätie, tak sa motor točí na jednu stranu, ak na druhý,
+tak na druhú – pomerne priamočiare.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Vyhnite sa tomu, že bude na oba piny ovládania pripojené nenulové napätie,
+keďže tým môžete zoskratovať motor driver. (Možno je voči tomu odolný, ale neskúšali sme to).</p>
+<p>Najjednoduchší spôsob, ako sa tomu vyhnúť je ovládať motor pomocou našich funkcií.</p>
+<p>Motor driver by mal ostať počas celého používania v zásade studený, takže ak je teplý až horúci,
+tak asi máte niečo zle zapojené, najpravdepodobnejšie sú to skratované prívodné káble k motorom.</p>
+</div>
+</div>
+<div class="section" id="senzor-ciary">
+<h2>Senzor čiary<a class="headerlink" href="#senzor-ciary" title="Permalink to this headline">¶</a></h2>
+<p>Tento senzor funguje tak, že má dve ledky.
+Jedna z nich svieti a druhá svetlo prijíma (a zisťuje, že koľko svetla prijala).
+Ak tento senzor svieti pred robota na zem, ktorá je celá biela,
+tak sa pomerne veľa svetla odrazí z papiera naspäť.
+V prípade, že je pred senzorom čierna páska, tak sa naspäť odrazí len pomerne málo svetla.</p>
+<p>Tento senzor teda robí to, že v prípade, že je množstvo svetla,
+ktoré ledka prijíma menšie ako nejaká hranica, tak vráti na výstup hodnotu 0 (0V),
+inak vracia hodnotu 1 (vstupné napätie).
+Aká presne je táto hranica sa dá nastaviť trimrom (potenciometrom), ktorý je na každom senzore.</p>
+</div>
+<div class="section" id="baterka">
+<h2>Baterka<a class="headerlink" href="#baterka" title="Permalink to this headline">¶</a></h2>
+<p>Baterka má dva identické konektory, jeden sa pripája do ESP32 a druhý do motor drivra.
+Konektory sú asymetrické, takže by ich nemalo byť možné zapojiť opačne.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Baterku neprepichujte, neohýbajte, nerežte a také. Nemusí aj toto LTT skončiť zhorenou rukou.</p>
+<p>Tiež v prípade, že baterka začne byť horúca, alebo sa začne nafukovať,
+tak ju prestaňte používať, a povedzte nám o tom.</p>
+<div class="figure align-default">
+<img alt="_images/nafuknuta-baterka.png" src="_images/nafuknuta-baterka.png" />
+</div>
+<p>Naľavo príklad nafúknutej baterky.</p>
+</div>
+</div>
+<div class="section" id="senzor-dotyku-spinac">
+<span id="dotyk"></span><h2>Senzor dotyku (spínač)<a class="headerlink" href="#senzor-dotyku-spinac" title="Permalink to this headline">¶</a></h2>
+<p>Ako senzor dotyku slúži mikrospínač, na ktorý je pripevnená páka s kolieskom,
+aby sa spoľahlivo pri dotyku stlačil.</p>
+<p>Na pripojenie spínača k ESPčku máte zopár káblov, ktoré majú na jednom konci
+4,8mm faston konektor a na druhom samicu, ktorá pasuje na piny ESPčka.</p>
+<p>Mikrospínač je v zásade prepínač, ktorý má 3 piny (nazvime ich stredný a dva krajné).
+V prípade, že nie je vypínač stlačený, tak je stredný pin prepojený (spojený) s jedným krajným.
+Po stlačení sa stredný pin pripojí (spojí) s opačným krajným pinom
+a odpojí sa od toho, ku ktorému bol pripojený doteraz.
+Schematicky je to pomerne pekne znázornené na boku vypínača.</p>
+<p>Spínač je teda zapojený tak, že po stlačení spojí (resp. rozpojí) zem so vstupným pinom ESPčka.</p>
+</div>
+<div class="section" id="esp32">
+<h2>ESP32<a class="headerlink" href="#esp32" title="Permalink to this headline">¶</a></h2>
+<p>Z vrchnej časti je konektor na USB, ktorým prepájate ESPčko s počítačom.
+Vedľa neho je reset tlačítko - to reštartuje ESPčko, teda sa program,
+ktorý je na ňom nahratý začne vykonávať od začiatku.
+Vedľa neho sa nachádza napájací konektor, na pripojenie baterky.</p>
+<p>Po obvode sa nachádza veľa™ pinov.
+Väčšina z nich je vstupno-výstupná, teda týmto pinom môžete niečo ovládať (výstup),
+a z tohoto pinu môžete čítať napätie (vstup).
+Takmer všetky piny môžu ovládať výstup nie len digitálne (vypnuté(0V)/zapnuté(3V)),
+ale aj analógovo (0-3V).</p>
+<div class="figure align-default">
+<img alt="_images/esp32-pinout.png" src="_images/esp32-pinout.png" />
+</div>
+<p>Pinout ESP32. Piny, ktoré sú označené ako PWM môžu byť ovládané aj analógovo.</p>
+<p>Na ESPčkach máte napájkovanú len zhruba polovicu nožičiek.
+V prípade, že by vám tento počet nestačil, môžete si dopájkovať aj vlastné,
+ale príďte nám to povedať.</p>
+</div>
+<div class="section" id="spolocne-plus-a-minus-zem">
+<h2>Spoločné plus a mínus(zem)<a class="headerlink" href="#spolocne-plus-a-minus-zem" title="Permalink to this headline">¶</a></h2>
+<p>Keďže pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory čiary a vypínače),
+tak máte vyrobený “rebrík”, na ktorý viete pripojiť mínus(zem)
+alebo plus z ESPčka a následne na tento rebrík popripájať všetko čo potrebujete.</p>
+</div>
+<div class="section" id="prepajanie-suciastok">
+<h2>Prepájanie súčiastok<a class="headerlink" href="#prepajanie-suciastok" title="Permalink to this headline">¶</a></h2>
+<p>Máte k dispozícii káble samica-samica na prepájanie takých pinov ako sú na ESPčku,
+káble, ktoré majú na jednom konci 4,8mm faston konektor a na druhom samicu,
+ktorá pasuje na piny ESPčka (na prepájanie <a class="reference internal" href="#dotyk"><span class="std std-ref">mikrospínačov z ESPčkom</span></a>).</p>
+<p>Ak by ste potrebovali nejaké káble pripájkovať, alebo ste mali málo káblov,
+tak sú k dispozícii pájkovačky.</p>
+<p>Bez dovolenia vedúcich káble nestrihajte, nech už by ste chceli robiť čokoľvek.</p>
+</div>
+<div class="section" id="ledky-a-pipac">
+<span id="led"></span><h2>LEDky a pípač<a class="headerlink" href="#ledky-a-pipac" title="Permalink to this headline">¶</a></h2>
+<p>V prípade, že chcete, môžete použiť aj niekoľko LEDiek a pípač.</p>
+<p>TODO</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Schémy zapojenia</a><ul>
+<li><a class="reference internal" href="#motory">Motory</a></li>
+<li><a class="reference internal" href="#senzor-ciary">Senzor čiary</a></li>
+<li><a class="reference internal" href="#baterka">Baterka</a></li>
+<li><a class="reference internal" href="#senzor-dotyku-spinac">Senzor dotyku (spínač)</a></li>
+<li><a class="reference internal" href="#esp32">ESP32</a></li>
+<li><a class="reference internal" href="#spolocne-plus-a-minus-zem">Spoločné plus a mínus(zem)</a></li>
+<li><a class="reference internal" href="#prepajanie-suciastok">Prepájanie súčiastok</a></li>
+<li><a class="reference internal" href="#ledky-a-pipac">LEDky a pípač</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="components.html"
+                        title="previous chapter">Technické info, ovládanie a popis robota</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Prvý program, nastavenie IDE</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/schemas.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Prvý program, nastavenie IDE"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="components.html" title="Technické info, ovládanie a popis robota"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">KPG 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Trojsten.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>
