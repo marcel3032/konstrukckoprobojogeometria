@@ -29,17 +29,23 @@ AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
 void notifyClientsMessage(long port, long value) {
-  ws.textAll("{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
+  String messageToSend = "{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}";
+  Serial.println("sent: ("+messageToSend+")");
+  ws.textAll(messageToSend);
   sendDebugMessage(DEBUG, "na vystup portu "+String(port)+" som dal: "+String(value));
 }
 
 void notifyClientsInput(long port, int value) {
-  ws.textAll("{ \"type\": \"input_changed\", \"data\": "+String(value)+", \"port\": "+String(port)+"}");
+  String messageToSend = "{ \"type\": \"input_changed\", \"data\": "+String(value)+", \"port\": "+String(port)+"}";
+  Serial.println("sent: ("+messageToSend+")");
+  ws.textAll(messageToSend);
   sendDebugMessage(DEBUG, "na vstupe portu "+String(port)+" som precital: "+String(value));
 }
 
 void sendDebugMessage(String level, String message){
-  ws.textAll("{ \"type\": \"debug\", \"level\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}");
+  String messageToSend = "{ \"type\": \"debug\", \"level\": \""+level+"\", \"date\": "+String(millis())+", \"data\": \""+message+"\"}";
+  ws.textAll(messageToSend);
+  Serial.println("sent: ("+messageToSend+")");
 }
 
 void motorWrite(int port1, int port2, int value){
@@ -65,6 +71,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   AwsFrameInfo *info = (AwsFrameInfo*)arg;
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
     data[len] = 0;
+    Serial.printf("recieved: (%s)\n", data);
     DynamicJsonDocument doc(1024);
     deserializeJson(doc, data);
     handleMessage(doc);
