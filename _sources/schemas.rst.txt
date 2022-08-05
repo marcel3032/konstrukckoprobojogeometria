@@ -8,7 +8,7 @@ Ukážková schéma zapojenia je tu:
 
 .. note::
    
-   Všeobecné rady k káblovaniu:
+   Všeobecné rady ku káblovaniu:
    
    * ak naozaj neviete čo robíte, tak neprepájajte káble kým sú pod napätím.
      Nie že by sa Vám malo niečo stať (je to iba 5V),

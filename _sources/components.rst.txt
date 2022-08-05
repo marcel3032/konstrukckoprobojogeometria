@@ -2,8 +2,10 @@
 Technické info, ovládanie a popis robota
 ============================================
 
-Robot nemusí byť plne autonómny, rátame s tým, že ho budete ovládať na diaľku.
-Čo sa týka autonómnosti, môžete si ale naprogramovať čo len chcete.
+Názov "robot" pre to, čo máte urobiť je možno trochu zavádzajúci,
+keďže robot nemusí vedieť urobiť všetko sám.
+Rátame s tým, že ho budete ovládať na diaľku.
+Samozrejme, to Vám ale nebráni naprogramovať si akúkoľvek automatizáciu, čo len chcete.
 
 .. _suciastky:
 
