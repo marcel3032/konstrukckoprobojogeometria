@@ -1,3 +1,4 @@
+
 /*
   Web server is running at http://192.168.4.1/
 */
@@ -8,6 +9,7 @@
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+#include <analogWrite.h>
 
 // Replace with your network credentials
 const char* ssid = "ESP1";
