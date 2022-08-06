@@ -11,7 +11,7 @@
 #include <ArduinoJson.h>
 #include <analogWrite.h>
 
-// Replace with your network credentials
+// TODO: nastavte meno a heslo wifi ake chcete
 const char* ssid = "ESP1";
 const char* password = "12345678";
 
@@ -136,4 +136,5 @@ void setup(){
 void loop() {
   ws.cleanupClients();
   checkInputs();
+  performLoop();
 }
