@@ -1,4 +1,3 @@
-
 /*
   Web server is running at http://192.168.4.1/
 */
@@ -10,12 +9,13 @@
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
 #include <analogWrite.h>
+void performLoop();
 
 // TODO: nastavte meno a heslo wifi ake chcete
 const char* ssid = "ESP1";
 const char* password = "12345678";
 
-const int ledPin = 22;
+const int LED_PIN = 22;
 extern const char index_html[];
 
 //debug levels
@@ -107,8 +107,8 @@ void initWebSocket() {
 void setup(){
   Serial.begin(115200);
 
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
   setInputsAsInput();
 
   Serial.println();

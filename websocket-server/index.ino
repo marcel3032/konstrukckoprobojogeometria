@@ -74,7 +74,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     this.button.innerHTML = "port: "+port;
     this.button.addEventListener('click', ev => {
       let send_value = 1 - this.value;
-      websocket.send('{"call_function": false, "port1":'+this.port+', "method":"digital", "value":'+send_value+'}');
+      websocket.send('{"port1":'+this.port+', "method":"digital", "value":'+send_value+'}');
     });
   }
   
@@ -93,7 +93,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     this.slider.value = 0;
     this.slider.addEventListener('input', ev => {
       let send_value = this.slider.value;
-      websocket.send('{"call_function": false, "port1":'+this.port+', "method":"analog", "value":'+send_value+'}');
+      websocket.send('{"port1":'+this.port+', "method":"analog", "value":'+send_value+'}');
     });
   }
   
@@ -123,8 +123,8 @@ const char index_html[] PROGMEM = R"rawliteral(
     this.slider.value = 0;
     this.slider.addEventListener('input', ev => {
       let send_value = this.slider.value;
-    console.log('{"call_function": false, "port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
-      websocket.send('{"call_function": false, "port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+    console.log('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+      websocket.send('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
     });
   }
   
@@ -147,8 +147,8 @@ const char index_html[] PROGMEM = R"rawliteral(
     this.button = $e("button", [], this.el);
     this.button.innerHTML = "function: "+function_index;
     this.button.addEventListener('click', ev => {
-      console.log('{"call_function": true, "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}')
-      websocket.send('{"call_function": true, "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}');
+      console.log('{"method": "function", "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}')
+      websocket.send('{"method": "function", "index":'+this.function_index+', "args":\'{"time":'+this.slider.value+'}\'}');
     });
   }
   
