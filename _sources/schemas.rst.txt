@@ -143,4 +143,4 @@ LEDky a pípač
 
 V prípade, že chcete, môžete použiť aj niekoľko LEDiek a pípač.
 
-TODO schéma a také
+.. image:: images/circuit-led.png
