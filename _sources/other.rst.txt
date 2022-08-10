@@ -25,6 +25,7 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
   tak už ho neviete ovládať ako :code:`digitalWrite` (treba resetnúť ESPčko).
 * Piny, ktoré sú označené ako ADC2 nie je možné použiť na čítanie analógového vstupu
   (:code:`analogRead`) v prípade, že sa používa wifi. :code:`digitalRead` by na týchto pinoch malo fungovať vždy.
+* ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku, tak musíte na port 22 zapísať `LOW` a nie `HIGH`. Toto sme sa snažili +- vyriešiť tak, aby sa to správalo rozumne, ale ak nebudete používať čisto naše funkcie, tak sa s tým stretnete.
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none

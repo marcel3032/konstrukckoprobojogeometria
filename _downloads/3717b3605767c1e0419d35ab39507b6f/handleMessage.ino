@@ -15,7 +15,7 @@ void doBlink(String args){
 }
 
 // definitions of functions, which you can call from ESP
-void (*functions[4])(String) = {doBlink};
+void (*functions[])(String) = {doBlink};
 
 
 void handleMessage(DynamicJsonDocument doc){

@@ -92,35 +92,35 @@ Budete si musieť nastaviť <cite>Port</cite> na ten, kde bude ESPčko reálne p
 </div>
 <div class="section" id="spustenie-prveho-programu">
 <h2>Spustenie prvého programu<a class="headerlink" href="#spustenie-prveho-programu" title="Permalink to this headline">¶</a></h2>
-<p>V Arduino IDE si otvoríte (<cite>File -&gt; Open</cite>) hocijaký súbor z priečinka <cite>websocket-server</cite>.
+<p>V Arduino IDE si otvoríte (<cite>File -&gt; Open</cite>) hocijaký súbor z priečinka <cite>websocket_server</cite>.
 IDE otvorí všetky súbory (na kartách hore), ktoré sú v tomto priečinku a následne pri kompilovaní
 a nahrávaní kódu do ESPčka spojí všetky súbory, ktoré sú v tomto priečinku do jedného veľkého súboru.</p>
 <p>Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:</p>
 <ul>
-<li><p>Súbor <a class="reference download internal" download="" href="_downloads/a53a74183ea84561e272b0e229a55545/websocket-server.ino"><code class="xref download docutils literal notranslate"><span class="pre">websocket-server.ino</span></code></a>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/29451cbf6bec2b80c3b0552f2c8c11fb/websocket_server.ino"><code class="xref download docutils literal notranslate"><span class="pre">websocket_server.ino</span></code></a>
 obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.
 Jediná vec, ktorú by ste v tomto súbore mali
 za normálnych okolností meniť je názov wifi a heslo k nej.</p></li>
-<li><p>Súbor <a class="reference download internal" download="" href="_downloads/f706b007868c799abea6cea042e2b8a6/index.ino"><code class="xref download docutils literal notranslate"><span class="pre">index.ino</span></code></a> obsahuje jedinú stringovú premennú,
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/10c66ecf923216ae389ef02871a14474/index.ino"><code class="xref download docutils literal notranslate"><span class="pre">index.ino</span></code></a> obsahuje jedinú stringovú premennú,
 ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
 aby sa <em>dala</em> rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
 aby sa s tým rozumnejšie pracovalo
 (ak neviete, čo to znamená, a prečo by ste to tak chceli robiť, alebo tak,
 tak s tým samozrejme môžete pracovať čisto v Arduino IDE).</p></li>
-<li><p>Súbor <a class="reference download internal" download="" href="_downloads/97cd1b5e468d665cfa028fce129160f4/handleMessage.ino"><code class="xref download docutils literal notranslate"><span class="pre">handleMessage.ino</span></code></a> obsahuje funkciu,
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/3717b3605767c1e0419d35ab39507b6f/handleMessage.ino"><code class="xref download docutils literal notranslate"><span class="pre">handleMessage.ino</span></code></a> obsahuje funkciu,
 ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
 nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.</p>
 <p>Okrem toho, je tento súbor odporúčané miesto, kam by ste mohli chcieť dávať funkcie,
 ktoré chcete volať z diaľkového ovládania robota (mobilu).
 Obsahuje tiež pole týchto funkcií (viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>)</p>
 </li>
-<li><p>Súbor <a class="reference download internal" download="" href="_downloads/8d26fdd3fa8f78197754908db1addea7/checkInputs.ino"><code class="xref download docutils literal notranslate"><span class="pre">checkInputs.ino</span></code></a>
+<li><p>Súbor <a class="reference download internal" download="" href="_downloads/b601c4e1bd5121b46fed648b2f53777f/checkInputs.ino"><code class="xref download docutils literal notranslate"><span class="pre">checkInputs.ino</span></code></a>
 obsahuje pole portov, ktoré slúžia ako vstupné porty. Obsahuje funkciu na počiatočné
 nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
 (Opäť viac o tom v časti <a class="reference internal" href="code.html#esp32"><span class="std std-ref">ESP32</span></a>.)</p></li>
 </ul>
 <p>Pre začiatok v kóde zmeňte jedinú vec:
-v súbore <cite>websocket-server</cite> na riadkoch 13 a 14 názov vašej wifi (premenná <cite>ssid</cite>)
+v súbore <cite>websocket_server</cite> na riadkoch 13 a 14 názov vašej wifi (premenná <cite>ssid</cite>)
 a heslo k nej (premenná <cite>password</cite>).
 Heslo asi chce mať viac ako 8 znakov a meno chce byť unikátne voči ostatným družinkám.
 Po pripojení ESPčka, vybratí správneho portu, a urobení všetkých vecí <a class="reference internal" href="#ide"><span class="std std-ref">v časti vyššie</span></a> môžete

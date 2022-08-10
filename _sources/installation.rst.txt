@@ -68,36 +68,36 @@ Budete si musieť nastaviť `Port` na ten, kde bude ESPčko reálne pripojené
 Spustenie prvého programu
 --------------------------
 
-V Arduino IDE si otvoríte (`File -> Open`) hocijaký súbor z priečinka `websocket-server`.
+V Arduino IDE si otvoríte (`File -> Open`) hocijaký súbor z priečinka `websocket_server`.
 IDE otvorí všetky súbory (na kartách hore), ktoré sú v tomto priečinku a následne pri kompilovaní
 a nahrávaní kódu do ESPčka spojí všetky súbory, ktoré sú v tomto priečinku do jedného veľkého súboru.
 
 Popíšme teraz súbory, ktoré sa v priečinku nachádzajú:
 
-* Súbor :download:`websocket-server.ino <../../websocket-server/websocket-server.ino>`
+* Súbor :download:`websocket_server.ino <../../websocket_server/websocket_server.ino>`
   obsahuje funkcie, ktoré ovládajú server, wifi, a podobne.
   Jediná vec, ktorú by ste v tomto súbore mali
   za normálnych okolností meniť je názov wifi a heslo k nej.
-* Súbor :download:`index.ino <../../websocket-server/index.ino>` obsahuje jedinú stringovú premennú,
+* Súbor :download:`index.ino <../../websocket_server/index.ino>` obsahuje jedinú stringovú premennú,
   ktorá obsahuje html stránky, ktorou sa ovláda ESPčko. Je v samostatnom súbore,
   aby sa *dala* rozumne otvoriť v nejakom editore, ktorý vie zvýrazňovať html syntax,
   aby sa s tým rozumnejšie pracovalo
   (ak neviete, čo to znamená, a prečo by ste to tak chceli robiť, alebo tak,
   tak s tým samozrejme môžete pracovať čisto v Arduino IDE).
-* Súbor :download:`handleMessage.ino <../../websocket-server/handleMessage.ino>` obsahuje funkciu,
+* Súbor :download:`handleMessage.ino <../../websocket_server/handleMessage.ino>` obsahuje funkciu,
   ktorá sa zavolá vždy potom, ako server (ESPčko) prijíme cez websocker
   nejakú správu od klienta (mobilu), napríklad stlačenie tlačítka, posunutie slidru, a podobne.
   
   Okrem toho, je tento súbor odporúčané miesto, kam by ste mohli chcieť dávať funkcie,
   ktoré chcete volať z diaľkového ovládania robota (mobilu).
   Obsahuje tiež pole týchto funkcií (viac o tom v časti :ref:`esp32`)
-* Súbor :download:`checkInputs.ino <../../websocket-server/checkInputs.ino>`
+* Súbor :download:`checkInputs.ino <../../websocket_server/checkInputs.ino>`
   obsahuje pole portov, ktoré slúžia ako vstupné porty. Obsahuje funkciu na počiatočné
   nastavenie týchto portov ako vstupné a funkciu na poslanie hodnoty portov do klienta (mobilu).
   (Opäť viac o tom v časti :ref:`esp32`.)
 
 Pre začiatok v kóde zmeňte jedinú vec:
-v súbore `websocket-server` na riadkoch 13 a 14 názov vašej wifi (premenná `ssid`)
+v súbore `websocket_server` na riadkoch 13 a 14 názov vašej wifi (premenná `ssid`)
 a heslo k nej (premenná `password`).
 Heslo asi chce mať viac ako 8 znakov a meno chce byť unikátne voči ostatným družinkám.
 Po pripojení ESPčka, vybratí správneho portu, a urobení všetkých vecí :ref:`v časti vyššie<ide>` môžete

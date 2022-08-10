@@ -57,6 +57,7 @@
 tak už ho neviete ovládať ako <code class="code docutils literal notranslate"><span class="pre">digitalWrite</span></code> (treba resetnúť ESPčko).</p></li>
 <li><p>Piny, ktoré sú označené ako ADC2 nie je možné použiť na čítanie analógového vstupu
 (<code class="code docutils literal notranslate"><span class="pre">analogRead</span></code>) v prípade, že sa používa wifi. <code class="code docutils literal notranslate"><span class="pre">digitalRead</span></code> by na týchto pinoch malo fungovať vždy.</p></li>
+<li><p>ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku, tak musíte na port 22 zapísať <cite>LOW</cite> a nie <cite>HIGH</cite>. Toto sme sa snažili +- vyriešiť tak, aby sa to správalo rozumne, ale ak nebudete používať čisto naše funkcie, tak sa s tým stretnete.</p></li>
 <li><p>V prípade, že v serial monitore dostanete takýto error:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rst:0x10 (RTCWDT_RTC_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
 configsip: 0, SPIWP:0xee

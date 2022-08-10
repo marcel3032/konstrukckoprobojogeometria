@@ -48,6 +48,210 @@
 Po pripojení na wifi na <code class="code docutils literal notranslate"><span class="pre">192.168.4.1</span></code> (čo je adresa espčka) beží webserver,
 ktorý hostuje jedinú stránku. Táto stránka slúži na diaľkové ovládanie robota.
 Viac o stránke je nasledujúcom odstavci <a class="reference internal" href="#client"><span class="std std-ref">Klient (stránka na ovládanie robota)</span></a>.</p>
+<dl class="function">
+<dt id="_CPPv4N16websocket_server20notifyClientsMessageEii">
+<span id="_CPPv3N16websocket_server20notifyClientsMessageEii"></span><span id="_CPPv2N16websocket_server20notifyClientsMessageEii"></span><span id="websocket_server::notifyClientsMessage__i.i"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">notifyClientsMessage</code><span class="sig-paren">(</span>int <em>port</em>, int <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server20notifyClientsMessageEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Táto funkcia je zavolaná pri zapísaní výstupnej hodnoty na port.
+Pošle do prehliadača informáciu o tom, čo zapísal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – port, ktorého hodnota sa zmenila</p></li>
+<li><p><strong>value</strong> – hodnota, na ktorú sa zmenil výstup</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server18notifyClientsInputEii">
+<span id="_CPPv3N16websocket_server18notifyClientsInputEii"></span><span id="_CPPv2N16websocket_server18notifyClientsInputEii"></span><span id="websocket_server::notifyClientsInput__i.i"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">notifyClientsInput</code><span class="sig-paren">(</span>int <em>port</em>, int <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server18notifyClientsInputEii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Táto funkcia je zavolaná pri zmene vstupnej hodnoty.
+Pošle do prehliadača informáciu o hodnote na vstupe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – port, ktorého hodnota sa zmenila</p></li>
+<li><p><strong>value</strong> – hodnota, na ktorú sa zmenil vstup</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server16sendDebugMessageE6String6String">
+<span id="_CPPv3N16websocket_server16sendDebugMessageE6String6String"></span><span id="_CPPv2N16websocket_server16sendDebugMessageE6String6String"></span><span id="websocket_server::sendDebugMessage__String.String"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">sendDebugMessage</code><span class="sig-paren">(</span>String <em>level</em>, String <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server16sendDebugMessageE6String6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Funkcia pošle do prehliadača debug log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> – úroveň dôležitosti tejto správy. Odporúčané deti sú “DEBUG”, “INFO”, “WARNING”, “ERROR” (tieto sú aj v premenných hore)</p></li>
+<li><p><strong>value</strong> – text správy, ktorá sa má poslať</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server10motorWriteEiii">
+<span id="_CPPv3N16websocket_server10motorWriteEiii"></span><span id="_CPPv2N16websocket_server10motorWriteEiii"></span><span id="websocket_server::motorWrite__i.i.i"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">motorWrite</code><span class="sig-paren">(</span>int <em>port1</em>, int <em>port2</em>, int <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server10motorWriteEiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Funkcia, ktorá ovláda motor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port1</strong> – prvý port, na ktorý je pripojený motor</p></li>
+<li><p><strong>port2</strong> – druhý port, na ktorý je pripojený motor</p></li>
+<li><p><strong>value</strong> – hodnota, ktorou sa má hýbať motor. Očakávaný rozsah je -255 až +255.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t">
+<span id="_CPPv3N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="_CPPv2N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="websocket_server::handleWebSocketMessage__voidP.uint8_tP.s"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">handleWebSocketMessage</code><span class="sig-paren">(</span>void *<em>arg</em>, uint8_t *<em>data</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Funkcia, ktorá rieši prijatie správy z websocketu.
+V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port1</strong> – prvý port, na ktorý je pripojený motor</p></li>
+<li><p><strong>port2</strong> – druhý port, na ktorý je pripojený motor</p></li>
+<li><p><strong>value</strong> – hodnota, ktorou sa má hýbať motor. Očakávaný rozsah je -255 až +255.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server7onEventEP14AsyncWebSocketP20AsyncWebSocketClient12AwsEventTypePvP7uint8_t6size_t">
+<span id="_CPPv3N16websocket_server7onEventEP14AsyncWebSocketP20AsyncWebSocketClient12AwsEventTypePvP7uint8_t6size_t"></span><span id="_CPPv2N16websocket_server7onEventEP14AsyncWebSocketP20AsyncWebSocketClient12AwsEventTypePvP7uint8_t6size_t"></span><span id="websocket_server::onEvent__AsyncWebSocketP.AsyncWebSocketClientP.AwsEventType.voidP.uint8_tP.s"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">onEvent</code><span class="sig-paren">(</span>AsyncWebSocket *<em>server</em>, AsyncWebSocketClient *<em>client</em>, AwsEventType <em>type</em>, void *<em>arg</em>, uint8_t *<em>data</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server7onEventEP14AsyncWebSocketP20AsyncWebSocketClient12AwsEventTypePvP7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Opäť funkcia, ktorá Vás nemusí až tak zaujímať, obhospodaruje websocket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server13initWebSocketEv">
+<span id="_CPPv3N16websocket_server13initWebSocketEv"></span><span id="_CPPv2N16websocket_server13initWebSocketEv"></span><span id="websocket_server::initWebSocket"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">initWebSocket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server13initWebSocketEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Opäť funkcia, ktorá Vás nemusí až tak zaujímať, obhospodaruje websocket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server5setupEv">
+<span id="_CPPv3N16websocket_server5setupEv"></span><span id="_CPPv2N16websocket_server5setupEv"></span><span id="websocket_server::setup"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defaultná Arduino funkcia, ktorá sa zavolá jediný krát pri spustení programu.
+V našom prípade inicializuje sériovú komunikáciu, nastavuje vstupné porty ako vstupné,
+nastavuje webserver a wifi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16websocket_server4loopEv">
+<span id="_CPPv3N16websocket_server4loopEv"></span><span id="_CPPv2N16websocket_server4loopEv"></span><span id="websocket_server::loop"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server4loopEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defaultná Arduino funkcia, ktorá sa volá dookola, počas celého behu programu.
+V našom prípade okrem websocket sránd robí to, že skontroluje vstupné hodnoty,
+a spustí funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">performLoop::performLoop()</span></code>, v ktorej môžete mať naprogramované všetko,
+čo sa má vykonávať celý čas počas behu programu (napríklad sledovanie čiary).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11performLoop11performLoopEv">
+<span id="_CPPv3N11performLoop11performLoopEv"></span><span id="_CPPv2N11performLoop11performLoopEv"></span><span id="performLoop::performLoop"></span>void <code class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11performLoop11performLoopEv" title="performLoop::performLoop">performLoop</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">performLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11performLoop11performLoopEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Táto funkcia je určená na napísanie vecí, ktoré sa majú diať celý čas počas behu programu.
+Odporúčaný postup, v prípade, že chcete mať funkciu (nazvime ju F),
+ktorú budete zapínať/vypínať počas behu programu je urobiť si funkciu,
+ktorá sa bude volať z prehliadača a zmení nejakú boolean premennú,
+že či sa bude funkcia F vykonávať.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13handleMessage13handleMessageE19DynamicJsonDocument">
+<span id="_CPPv3N13handleMessage13handleMessageE19DynamicJsonDocument"></span><span id="_CPPv2N13handleMessage13handleMessageE19DynamicJsonDocument"></span><span id="handleMessage::handleMessage__DynamicJsonDocument"></span>void <code class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13handleMessage13handleMessageE19DynamicJsonDocument" title="handleMessage::handleMessage">handleMessage</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">handleMessage</code><span class="sig-paren">(</span>DynamicJsonDocument <em>doc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13handleMessage13handleMessageE19DynamicJsonDocument" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Toto je funkcia, ktorá sa volá vždy po prijatí websocketovej správy.
+Podľa toho, aký je <code class="code docutils literal notranslate"><span class="pre">method</span></code> v prijate websocket správe
+(<code class="code docutils literal notranslate"><span class="pre">analog</span></code>/<code class="code docutils literal notranslate"><span class="pre">digital</span></code>/<code class="code docutils literal notranslate"><span class="pre">function</span></code>/<code class="code docutils literal notranslate"><span class="pre">motor</span></code>)
+sa vykoná tá-ktorá vec.</p>
+<p>Asi jediné nepriamočiare je to, ako to funguje s funkciami.
+V poli <code class="code docutils literal notranslate"><span class="pre">functions</span></code> máme všetky funkcie, ktoré môžeme volať.
+Všetky funkcie berú ako parameter string - json,
+v ktorom funkcii môžete poslať vstupné parametre.
+To, ktorá funkcia sa má spustiť, sa ESP posiela ako index do poľa funkcií.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>doc</strong> – json dokument, ktorý obsahuje prijatú správu.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11checkInputs11checkInputsEv">
+<span id="_CPPv3N11checkInputs11checkInputsEv"></span><span id="_CPPv2N11checkInputs11checkInputsEv"></span><span id="checkInputs::checkInputs"></span>void <code class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11checkInputs11checkInputsEv" title="checkInputs::checkInputs">checkInputs</a><code class="sig-prename descclassname">::</code></code><code class="sig-name descname">checkInputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11checkInputs11checkInputsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Táto funkcia kontroluje hodnoty na vstupných portoch.
+Porty sú uložené v poli <code class="code docutils literal notranslate"><span class="pre">ports</span></code>.
+Aby zbytočne nezahlcovala websocket komunikáciu,
+tak pošle hodnotu na vstupa iba raz za čas
+(koľko presne, viete nastaviť v premennej <code class="code docutils literal notranslate"><span class="pre">min_dif</span></code>,
+ale máme pocit, že prednastavených 500ms je +- fajn)</p>
+<p>Funkcia aktuálne číta všetky vstupné hodnoty digitálne (0/1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11checkInputs16setInputsAsInputEv">
+<span id="_CPPv3N11checkInputs16setInputsAsInputEv"></span><span id="_CPPv2N11checkInputs16setInputsAsInputEv"></span><span id="checkInputs::setInputsAsInput"></span>void <code class="sig-prename descclassname">checkInputs<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setInputsAsInput</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11checkInputs16setInputsAsInputEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Funkcia nastaví všetky vstupné porty ako vstupné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="klient-stranka-na-ovladanie-robota">
 <span id="client"></span><h2>Klient (stránka na ovládanie robota)<a class="headerlink" href="#klient-stranka-na-ovladanie-robota" title="Permalink to this headline">¶</a></h2>

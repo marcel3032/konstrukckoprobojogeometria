@@ -16,7 +16,8 @@ const char* ssid = "ESP1";
 const char* password = "12345678";
 
 const int LED_PIN = 22;
-extern const char index_html[];
+extern const char index_html[]; // html stránky, ktorou ovládate robota
+extern const char init_js[]; // js, ktorý inicializuje websocket
 
 //debug levels
 String DEBUG = "DEBUG";
@@ -30,14 +31,14 @@ const int MAX_VALUE = 255;
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
-void notifyClientsMessage(long port, long value) {
+void notifyClientsMessage(int port, int value) {
   String messageToSend = "{ \"type\": \"message\", \"data\": "+String(value)+", \"port\": "+String(port)+"}";
   Serial.println("sent: ("+messageToSend+")");
   ws.textAll(messageToSend);
   sendDebugMessage(DEBUG, "na vystup portu "+String(port)+" som dal: "+String(value));
 }
 
-void notifyClientsInput(long port, int value) {
+void notifyClientsInput(int port, int value) {
   String messageToSend = "{ \"type\": \"input_changed\", \"data\": "+String(value)+", \"port\": "+String(port)+"}";
   Serial.println("sent: ("+messageToSend+")");
   ws.textAll(messageToSend);
@@ -128,6 +129,10 @@ void setup(){
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/html", index_html);
+  });
+  
+  server.on("/init", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/js", init_js);
   });
 
   server.begin();
