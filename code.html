@@ -178,7 +178,7 @@ nastavuje webserver a wifi.</p>
 <span id="_CPPv3N16websocket_server4loopEv"></span><span id="_CPPv2N16websocket_server4loopEv"></span><span id="websocket_server::loop"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server4loopEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Defaultná Arduino funkcia, ktorá sa volá dookola, počas celého behu programu.
 V našom prípade okrem websocket sránd robí to, že skontroluje vstupné hodnoty,
-a spustí funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">performLoop::performLoop()</span></code>, v ktorej môžete mať naprogramované všetko,
+a spustí funkciu <a class="reference internal" href="#_CPPv4N11performLoop11performLoopEv" title="performLoop::performLoop"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">performLoop::performLoop()</span></code></a>, v ktorej môžete mať naprogramované všetko,
 čo sa má vykonávať celý čas počas behu programu (napríklad sledovanie čiary).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -259,6 +259,205 @@ ale máme pocit, že prednastavených 500ms je +- fajn)</p>
 Komunikácia prebieha obojsmerne. Od klienta chodia robotovi príkazy
 na zmenu výstupnej hodnoty pinov a od robota informácie o úspešne zmenenej výstupnej hodnote,
 zmenenej vstupnej hodnote a pomocné debugovacie výpisy.</p>
+<dl class="function">
+<dt id="init_js.initWebSocket">
+<code class="sig-prename descclassname">init_js.</code><code class="sig-name descname">initWebSocket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#init_js.initWebSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funkcia inicializuje websocket komunikáciu, v zásade Vás nemusí zaujímať.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="init_js._S_e">
+<code class="sig-prename descclassname">init_js.</code><code class="sig-name descname">$e</code><span class="sig-paren">(</span><em class="sig-param">elName</em>, <em class="sig-param">cl</em>, <em class="sig-param">parEl</em><span class="sig-paren">)</span><a class="headerlink" href="#init_js._S_e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funkcia vytvorí nový html element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elName</strong> – Meno elementu, ktorý sa má vyrobiť (<code class="code docutils literal notranslate"><span class="pre">h1</span></code>, <code class="code docutils literal notranslate"><span class="pre">p</span></code>, <code class="code docutils literal notranslate"><span class="pre">input</span></code>, …)</p></li>
+<li><p><strong>cl</strong> – Pole, ktoré na každom indexe obsahuje dvojprvkové pole, kde nultý index je kľúč a druhý je hodnota parametrov (napríklad <code class="code docutils literal notranslate"><span class="pre">[[&quot;id&quot;,</span> <span class="pre">&quot;nieco&quot;],</span> <span class="pre">[&quot;class&quot;,</span> <span class="pre">&quot;content&quot;]]</span></code>)</p></li>
+<li><p><strong>parEl</strong> – Element, do ktorého sa má nový element, vložiť.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Odkaz na vytvorený element.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="index.onMessage">
+<code class="sig-prename descclassname">index.</code><code class="sig-name descname">onMessage</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#index.onMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funkcia, ktorá je spustená po prijatí správy cez websocket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="index.PortOutput">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">PortOutput</code><span class="sig-paren">(</span><em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#index.PortOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trieda, z ktorej dedí väčšina ovládacích prvkov. Má iba konštruktor a ten vyrobí potrebné html elementy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – Port, ktorý má tento ovládací prvok ovládať.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="index.OutputButton">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">OutputButton</code><span class="sig-paren">(</span><em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#index.OutputButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trieda, ktorá vyrába tlačítko, ktoré digitálne (0/1) ovláda jeden výstupný port na ESP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – Port, ktorý má tento ovládací prvok ovládať.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="index.OutputButton.update">
+<code class="sig-prename descclassname">index.OutputButton.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">recieved_data</em><span class="sig-paren">)</span><a class="headerlink" href="#index.OutputButton.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metóda, ktorá je zavolaná funkciou <a class="reference internal" href="#index.onMessage" title="index.onMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">index.onMessage()</span></code></a>, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="index.Slider">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">Slider</code><span class="sig-paren">(</span><em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#index.Slider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trieda, ktorá vyrába slider (posúvatko), ktoré analógovo ovláda jeden výstupný port na ESP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – Port, ktorý má tento ovládací prvok ovládať.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="index.Slider.update">
+<code class="sig-prename descclassname">index.Slider.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">recieved_data</em><span class="sig-paren">)</span><a class="headerlink" href="#index.Slider.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metóda, ktorá je zavolaná funkciou <a class="reference internal" href="#index.onMessage" title="index.onMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">index.onMessage()</span></code></a>, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="index.MotorSlider">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">MotorSlider</code><span class="sig-paren">(</span><em class="sig-param">port1</em>, <em class="sig-param">port2</em><span class="sig-paren">)</span><a class="headerlink" href="#index.MotorSlider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda motor, ktorý je do ESP pripojený na 2 porty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port1</strong> – Prvý port, na ktorý je pripojený motor.</p></li>
+<li><p><strong>port2</strong> – Druhý port, na ktorý je pripojený motor.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="index.MotorSlider.update">
+<code class="sig-prename descclassname">index.MotorSlider.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">recieved_data</em><span class="sig-paren">)</span><a class="headerlink" href="#index.MotorSlider.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metóda, ktorá je zavolaná funkciou <a class="reference internal" href="#index.onMessage" title="index.onMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">index.onMessage()</span></code></a>, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="index.PortInput">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">PortInput</code><span class="sig-paren">(</span><em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#index.PortInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trieda, ktorá vyrába element, ktorý prijíma informácie o zmene vstupnej hodnoty na porte na ESP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> – Port, ktorý zobrazuje tento element.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="index.PortInput.update">
+<code class="sig-prename descclassname">index.PortInput.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">recieved_data</em><span class="sig-paren">)</span><a class="headerlink" href="#index.PortInput.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metóda, ktorá je zavolaná funkciou <a class="reference internal" href="#index.onMessage" title="index.onMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">index.onMessage()</span></code></a>, ktorá o tom dostane info od ESPčka potom, čo ESPčko zistí hodnotu na vstupnom porte.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="index.SliderFunctionButton">
+<em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">SliderFunctionButton</code><span class="sig-paren">(</span><em class="sig-param">function_index</em><span class="sig-paren">)</span><a class="headerlink" href="#index.SliderFunctionButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ukážka triedy, ktorá ovláda funkciu na ESPčku.</p>
+<p>Po stlačení tlačítka (<code class="code docutils literal notranslate"><span class="pre">addEventListener</span></code>)   zistí hodnotu, na ktorej je slider nastavený (<code class="code docutils literal notranslate"><span class="pre">this.slider.value</span></code>), a pošle to ESPčku, ako argument funkcie.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function_index</strong> – Index do poľa funkcií v ESPčku, ktorý označuje funkciu, ktorá sa má zavolať.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="index.SliderFunctionButton.update">
+<code class="sig-prename descclassname">index.SliderFunctionButton.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">recieved_data</em><span class="sig-paren">)</span><a class="headerlink" href="#index.SliderFunctionButton.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metóda, ktorá je zavolaná funkciou <a class="reference internal" href="#index.onMessage" title="index.onMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">index.onMessage()</span></code></a>, ktorá o tom dostane info od ESPčka potom, čo ESPčko zistí hodnotu na vstupnom porte.</p>
+<blockquote>
+<div><p>V tomto prípade nič neurobí.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Objekt s dátami, ktoré boli prijaté.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="input_elements">
+<code class="sig-name descname">input_elements</code><a class="headerlink" href="#input_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pole, ktoré obsahuje ovládacie prvky, ktoré používate.
+V prípade, že chcete pridať nový ovládací prvok, tak potrebujete vložiť nový prvok do tohoto poľa.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="port_inputs">
+<code class="sig-name descname">port_inputs</code><a class="headerlink" href="#port_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pole, ktoré obsahuje elementy, ktoré prijímajú informácie o zmenách vstupných hodnôt v ESPčku.
+V prípade, že chcete pridať nový takýto element, tak potrebujete vložiť nový prvok do tohoto poľa.</p>
+</dd></dl>
+
 </div>
 </div>
 

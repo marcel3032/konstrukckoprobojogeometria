@@ -160,12 +160,12 @@ const char index_html[] PROGMEM = R"rawliteral(
       }
     }
     
-    var buttons = [];
-    buttons.push(new OutputButton(22));
-    buttons.push(new Slider(13));
-    buttons.push(new Slider(22));
-    buttons.push(new SliderFunctionButton(0));
-    buttons.push(new MotorSlider(13,22));
+    var input_elements = [];
+    input_elements.push(new OutputButton(22));
+    input_elements.push(new Slider(13));
+    input_elements.push(new Slider(22));
+    input_elements.push(new SliderFunctionButton(0));
+    input_elements.push(new MotorSlider(13,22));
     
     var port_inputs = [];
     port_inputs.push(new PortInput(32));

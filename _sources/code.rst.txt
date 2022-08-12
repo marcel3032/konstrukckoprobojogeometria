@@ -88,7 +88,7 @@ Viac o stránke je nasledujúcom odstavci :ref:`client`.
 
    Defaultná Arduino funkcia, ktorá sa volá dookola, počas celého behu programu.
    V našom prípade okrem websocket sránd robí to, že skontroluje vstupné hodnoty,
-   a spustí funkciu :func:`performLoop::performLoop()`, v ktorej môžete mať naprogramované všetko,
+   a spustí funkciu :cpp:func:`performLoop::performLoop()`, v ktorej môžete mať naprogramované všetko,
    čo sa má vykonávať celý čas počas behu programu (napríklad sledovanie čiary).
    
    :return: void
@@ -151,3 +151,115 @@ Stránka a robot spolu komunikujú cez websocket.
 Komunikácia prebieha obojsmerne. Od klienta chodia robotovi príkazy
 na zmenu výstupnej hodnoty pinov a od robota informácie o úspešne zmenenej výstupnej hodnote,
 zmenenej vstupnej hodnote a pomocné debugovacie výpisy. 
+
+
+.. js:function:: init_js.initWebSocket()
+   
+   Funkcia inicializuje websocket komunikáciu, v zásade Vás nemusí zaujímať.
+
+
+.. js:function:: init_js.$e(elName, cl, parEl)
+   
+   Funkcia vytvorí nový html element.
+   
+   :param elName: Meno elementu, ktorý sa má vyrobiť (:code:`h1`, :code:`p`, :code:`input`, ...)
+   :param cl: Pole, ktoré na každom indexe obsahuje dvojprvkové pole, kde nultý index je kľúč a druhý je hodnota parametrov (napríklad :code:`[["id", "nieco"], ["class", "content"]]`)
+   :param parEl: Element, do ktorého sa má nový element, vložiť.
+   :returns: Odkaz na vytvorený element.
+
+
+.. js:function:: index.onMessage(event)
+
+   Funkcia, ktorá je spustená po prijatí správy cez websocket.
+   
+   :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:class:: index.PortOutput(port)
+
+   Trieda, z ktorej dedí väčšina ovládacích prvkov. Má iba konštruktor a ten vyrobí potrebné html elementy.
+   
+   :param port: Port, ktorý má tento ovládací prvok ovládať.
+
+
+.. js:class:: index.OutputButton(port)
+
+   Trieda, ktorá vyrába tlačítko, ktoré digitálne (0/1) ovláda jeden výstupný port na ESP.
+   
+   :param port: Port, ktorý má tento ovládací prvok ovládať.
+   
+   .. js:function:: update(recieved_data)
+       
+       Metóda, ktorá je zavolaná funkciou :js:func:`index.onMessage()`, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.
+       
+       :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:class:: index.Slider(port)
+
+   Trieda, ktorá vyrába slider (posúvatko), ktoré analógovo ovláda jeden výstupný port na ESP.
+   
+   :param port: Port, ktorý má tento ovládací prvok ovládať.
+   
+   .. js:function:: update(recieved_data)
+       
+       Metóda, ktorá je zavolaná funkciou :js:func:`index.onMessage()`, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.
+       
+       :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:class:: index.MotorSlider(port1, port2)
+
+   Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda motor, ktorý je do ESP pripojený na 2 porty.
+   
+   :param port1: Prvý port, na ktorý je pripojený motor.
+   
+   :param port2: Druhý port, na ktorý je pripojený motor.
+   
+   .. js:function:: update(recieved_data)
+       
+       Metóda, ktorá je zavolaná funkciou :js:func:`index.onMessage()`, ktorá o tom dostane info od ESPčka potom, čo ESPčko nastaví výstupný port na danú hodnotu.
+       
+       :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:class:: index.PortInput(port)
+
+   Trieda, ktorá vyrába element, ktorý prijíma informácie o zmene vstupnej hodnoty na porte na ESP.
+   
+   :param port: Port, ktorý zobrazuje tento element.
+   
+   .. js:function:: update(recieved_data)
+       
+       Metóda, ktorá je zavolaná funkciou :js:func:`index.onMessage()`, ktorá o tom dostane info od ESPčka potom, čo ESPčko zistí hodnotu na vstupnom porte.
+       
+       :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:class:: index.SliderFunctionButton(function_index)
+
+   Ukážka triedy, ktorá ovláda funkciu na ESPčku.
+   
+   Po stlačení tlačítka (:code:`addEventListener`)   zistí hodnotu, na ktorej je slider nastavený (:code:`this.slider.value`), a pošle to ESPčku, ako argument funkcie.
+   
+   :param function_index: Index do poľa funkcií v ESPčku, ktorý označuje funkciu, ktorá sa má zavolať.
+   
+   .. js:function:: update(recieved_data)
+       
+       Metóda, ktorá je zavolaná funkciou :js:func:`index.onMessage()`, ktorá o tom dostane info od ESPčka potom, čo ESPčko zistí hodnotu na vstupnom porte.
+	   
+	   V tomto prípade nič neurobí.
+       
+       :param event: Objekt s dátami, ktoré boli prijaté.
+
+
+.. js:data:: input_elements
+
+   Pole, ktoré obsahuje ovládacie prvky, ktoré používate.
+   V prípade, že chcete pridať nový ovládací prvok, tak potrebujete vložiť nový prvok do tohoto poľa.
+
+
+.. js:data:: port_inputs
+
+   Pole, ktoré obsahuje elementy, ktoré prijímajú informácie o zmenách vstupných hodnôt v ESPčku.
+   V prípade, že chcete pridať nový takýto element, tak potrebujete vložiť nový prvok do tohoto poľa.
