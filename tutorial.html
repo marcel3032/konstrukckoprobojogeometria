@@ -79,6 +79,8 @@ v <cite>index.ino</cite> dole, okolo riadku 185.</p>
 </div>
 <p>Trieda <cite>Slider</cite> tiež urobí všetko za nás,
 jediná vec, ktorú jej potrebujeme dať, je port, ktorý má ovládať.</p>
+<p>(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
+pozri <a class="reference internal" href="other.html#knownissues"><span class="std std-ref">Known issues</span></a>)</p>
 </div>
 <div class="section" id="slider-s-tlacitkom-ovladajuci-funkciu-0">
 <h2>Slider s tlačítkom, ovládajúci funkciu 0<a class="headerlink" href="#slider-s-tlacitkom-ovladajuci-funkciu-0" title="Permalink to this headline">¶</a></h2>
@@ -228,15 +230,29 @@ inak ostane zhasnutá.</p>
 </div>
 <div class="section" id="slider-ovladajuci-2-porty-19-a-22">
 <h2>Slider ovládajúci 2 porty (19 a 22)<a class="headerlink" href="#slider-ovladajuci-2-porty-19-a-22" title="Permalink to this headline">¶</a></h2>
-<p>bla</p>
+<p>Ako sme už písali v <a class="reference internal" href="components.html#suciastky"><span class="std std-ref">Súčiastky</span></a>, motor je ovládaný dvomi pinmi.
+Najjednoduchší spôsob, ako ho ovládať, je použíť hotovú triedu <code class="code docutils literal notranslate"><span class="pre">MotorSlider</span></code>.</p>
+<p>Klasicky slider pridáte do poľa:code:<cite>input_elements</cite>
+v <cite>index.ino</cite> dole, okolo riadku 185.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">input_elements</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">MotorSlider</span><span class="p">(</span><span class="mi">22</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Trieda <cite>MotorSlider</cite> tiež urobí všetko za nás,
+jediná vec, ktorú jej potrebujeme dať, sú dva porty, kde sú zapojené motory.</p>
 </div>
 <div class="section" id="element-ukazujuci-aktualny-stav-portu-13">
 <h2>Element ukazujúci aktuálny stav portu (13)<a class="headerlink" href="#element-ukazujuci-aktualny-stav-portu-13" title="Permalink to this headline">¶</a></h2>
-<p>bla</p>
-<p>V prípade, že ťuknete na tlačítko, ktoré spúšťa funkciu, tak by sa mala ledka na chvíľu rozsvietiť a zhasnúť.</p>
-<p>V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne rozsvecovať a zhasínať.
-(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
-pozri <a class="reference internal" href="other.html#knownissues"><span class="std std-ref">Known issues</span></a>)</p>
+<p>Slider treba pridať do poľa <code class="code docutils literal notranslate"><span class="pre">port_inputs</span></code>
+v <cite>index.ino</cite> dole, okolo riadku 190.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">port_inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">PortInput</span><span class="p">(</span><span class="mi">13</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Trieda <cite>PortInput</cite> opäť urobí všetko za nás,
+jediná vec, ktorú jej potrebujeme dať, je port, ktorý chceme sledovať.</p>
+<p>Okrem úprav v javascripte treba tento port pridať aj do kódu k ESPčku.
+V súbore <code class="code docutils literal notranslate"><span class="pre">checkInputs</span></code> je úplne na vrchu pole, v ktorom sú napísané všetky porty,
+ktoré ESPčko sleduje a posiela do mobilu:</p>
+<p>Do tohoto poľa treba napísať všetky porty, ktoré má ESPčko sledovať.</p>
 </div>
 </div>
 
