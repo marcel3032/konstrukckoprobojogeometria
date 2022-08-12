@@ -35,7 +35,11 @@ const char index_html[] PROGMEM = R"rawliteral(
       if(recieved_data.type=="debug"){
 	    let row = $e("tr", [], false);
 		row.innerHTML = "<td>"+recieved_data.date+"</td><td>"+recieved_data.level+"</td><td>"+recieved_data.data+"</td>";
-        document.getElementById('debug_log').prepend(row);
+		let debug_log = document.getElementById("debug_log");
+		if(debug_log.firstElementChild.nextElementSibling)
+			debug_log.insertBefore(row, debug_log.firstElementChild.nextElementSibling);
+		else
+			debug_log.append(row);
       }
     }
   
