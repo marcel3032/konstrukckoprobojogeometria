@@ -8,10 +8,13 @@ void doBlink(String args){
   DynamicJsonDocument doc(1024);
   deserializeJson(doc, args);
   
+  // ziskame zo spravy cas, ako dlho ma LEDka svietit
+  int time = doc["time"];
+  
   digitalWrite(LED_PIN, LOW);
-  delay(doc["time"]);
+  delay(time);
   digitalWrite(LED_PIN, HIGH);
-  delay(doc["time"]);
+  delay(time);
 }
 
 void blinkOnTouch(String args){
@@ -20,13 +23,9 @@ void blinkOnTouch(String args){
   args.replace("\"", "\'");
   sendDebugMessage(DEBUG, "zavolana funkcia doBlink s argumentami: "+args);
   
-  // rozparsujeme argumenty
-  DynamicJsonDocument doc(1024);
-  deserializeJson(doc, args);
-  
   extern bool blinking;
-  
   blinking = !blinking;
+  notifyClientsMessage(101, blinking);
 }
 
 // definitions of functions, which you can call from ESP

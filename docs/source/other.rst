@@ -29,6 +29,8 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
   tak musíte na port 22 zapísať `LOW` a nie `HIGH`. Toto sme sa snažili +- vyriešiť tak,
   aby sa to správalo rozumne, takže ak nebudete používať čisto naše funkcie,
   tak by všetko mohlo fungovať +- očakávane.
+* Ak chcete z nejakého portu čítať vstup, napríklad si na neho napojiť tlačítko,
+  tak aj ak nepotrebujete z neho mať výstup v mobile, tak si ho tam pridajte (najmä do :code:`checkInputs.ino`), keďže tam sa pri inicializácii rieši, aby bol port správne vstupný.
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none

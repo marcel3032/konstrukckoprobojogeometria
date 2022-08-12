@@ -122,13 +122,5 @@ Mobil/notebook bude možno protestovať, že táto sieť nemá internet, ale odk
 Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome/firefox je celkom v pohode),
 a otvorte :code:`192.168.4.1` (to je adresa ESPčka).
 
-Zobrazí Vám jeden slider, ktorý ovláda port `22`.
-Zobrazia sa vám tiež dve tlačítka, jedno ovláda port `22` a druhé spúšťa nejakú funkciu.
-
+Okrem iného, sa Vám zobrazí tlačítko, ktoré ovláda port `22`.
 Teraz keď ťukáte na tlačítko, ktoré ovláda port, tak by sa mala ledka na ESPčku zapínať a vypínať.
-
-V prípade, že ťuknete na tlačítko, ktoré spúšťa funkciu, tak by sa mala ledka na chvíľu rozsvietiť a zhasnúť.
-
-V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne rozsvecovať a zhasínať.
-(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
-pozri :ref:`knownIssues`)
