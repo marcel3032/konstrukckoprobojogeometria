@@ -9,7 +9,7 @@ Nápady, čo môžete programovať / ladiť
 
 * funkcia, po ktorej spustení bude robot chodiť po čiare
 * ovládanie pre 2 ľudí
-* rozumné ovládanie motorom niečím ako joystick
+* rozumné ovládanie motorov niečím ako joystick
 * funkcie na otočenie o 90 stupňov
 * chodenie po bludisku podľa dotykov
 * do súťaže krásy môžete použiť aj  :ref:`pípače, alebo LEDky <led>` 
@@ -25,7 +25,10 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
   tak už ho neviete ovládať ako :code:`digitalWrite` (treba resetnúť ESPčko).
 * Piny, ktoré sú označené ako ADC2 nie je možné použiť na čítanie analógového vstupu
   (:code:`analogRead`) v prípade, že sa používa wifi. :code:`digitalRead` by na týchto pinoch malo fungovať vždy.
-* ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku, tak musíte na port 22 zapísať `LOW` a nie `HIGH`. Toto sme sa snažili +- vyriešiť tak, aby sa to správalo rozumne, ale ak nebudete používať čisto naše funkcie, tak sa s tým stretnete.
+* ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku,
+  tak musíte na port 22 zapísať `LOW` a nie `HIGH`. Toto sme sa snažili +- vyriešiť tak,
+  aby sa to správalo rozumne, takže ak nebudete používať čisto naše funkcie,
+  tak by všetko mohlo fungovať +- očakávane.
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none
