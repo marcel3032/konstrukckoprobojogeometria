@@ -52,6 +52,9 @@ v `index.ino` dole, okolo riadku 185.
 Trieda `Slider` tiež urobí všetko za nás,
 jediná vec, ktorú jej potrebujeme dať, je port, ktorý má ovládať.
 
+(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
+pozri :ref:`knownIssues`)
+
 Slider s tlačítkom, ovládajúci funkciu 0
 ----------------------------------------------
 
@@ -238,17 +241,38 @@ inak ostane zhasnutá.
 Slider ovládajúci 2 porty (19 a 22)
 ----------------------------------------------
 
-bla
+Ako sme už písali v :ref:`suciastky`, motor je ovládaný dvomi pinmi.
+Najjednoduchší spôsob, ako ho ovládať, je použíť hotovú triedu :code:`MotorSlider`.
+
+Klasicky slider pridáte do poľa:code:`input_elements`
+v `index.ino` dole, okolo riadku 185.
+
+.. code-block:: javascript
+
+   input_elements.push(new MotorSlider(22));
+
+Trieda `MotorSlider` tiež urobí všetko za nás,
+jediná vec, ktorú jej potrebujeme dať, sú dva porty, kde sú zapojené motory.
 
 Element ukazujúci aktuálny stav portu (13)
 ----------------------------------------------
 
-bla
+Slider treba pridať do poľa :code:`port_inputs`
+v `index.ino` dole, okolo riadku 190.
 
+.. code-block:: javascript
 
+   port_inputs.push(new PortInput(13));
 
-V prípade, že ťuknete na tlačítko, ktoré spúšťa funkciu, tak by sa mala ledka na chvíľu rozsvietiť a zhasnúť.
+Trieda `PortInput` opäť urobí všetko za nás,
+jediná vec, ktorú jej potrebujeme dať, je port, ktorý chceme sledovať.
 
-V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne rozsvecovať a zhasínať.
-(Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
-pozri :ref:`knownIssues`)
+Okrem úprav v javascripte treba tento port pridať aj do kódu k ESPčku.
+V súbore :code:`checkInputs` je úplne na vrchu pole, v ktorom sú napísané všetky porty,
+ktoré ESPčko sleduje a posiela do mobilu:
+
+.. code-blocks:: javascript
+
+   int ports[] = {13};
+
+Do tohoto poľa treba napísať všetky porty, ktoré má ESPčko sledovať.
