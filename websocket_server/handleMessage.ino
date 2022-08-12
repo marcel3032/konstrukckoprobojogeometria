@@ -52,6 +52,9 @@ void handleMessage(DynamicJsonDocument doc){
   else if(method.compareTo("function")==0){
     int index = doc["index"];
     String args = doc["args"];
-    (*functions[index])(args);
+    if(0 <= index && index < sizeof(functions)/sizeof(functions[0]))
+      (*functions[index])(args);
+    else
+      sendDebugMessage(WARNING, "Function index out of range");
   }
 }
