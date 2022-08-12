@@ -16,6 +16,7 @@ Obsah:
    components
    schemas
    installation
+   tutorial
    code
    other
 
