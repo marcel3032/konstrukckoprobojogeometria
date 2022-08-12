@@ -140,7 +140,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       }
     
       update(recieved_data){
-  	  }
+	  }
     }
     
     class BlinkFunctionButton {
@@ -158,6 +158,8 @@ const char index_html[] PROGMEM = R"rawliteral(
       }
     
       update(recieved_data){
+	    if(recieved_data.port==101)
+		  this.description1.innerHTML = `state: ${recieved_data.data}`;
   	  }
     }
     
