@@ -123,7 +123,9 @@ Pošle do prehliadača informáciu o hodnote na vstupe.</p>
 <dt id="_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t">
 <span id="_CPPv3N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="_CPPv2N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="websocket_server::handleWebSocketMessage__voidP.uint8_tP.s"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">handleWebSocketMessage</code><span class="sig-paren">(</span>void *<em>arg</em>, uint8_t *<em>data</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Funkcia, ktorá rieši prijatie správy z websocketu.
-V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.</p>
+V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.
+Okrem tohoto, v tejto funkcii sa nachádza aj schválne umiestnený delay,
+aby mal robot nejjakú latenciu. Prosím, nemažte tieto riadky.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

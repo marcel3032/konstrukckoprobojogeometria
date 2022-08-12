@@ -10,8 +10,6 @@ Popíšme teraz presnejšie tieto disciplíny:
 Disciplíny
 ------------
 
-TODO: kriplenie
-
 Prekážková dráha
 ~~~~~~~~~~~~~~~~~~
 

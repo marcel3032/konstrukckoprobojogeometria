@@ -132,8 +132,3 @@ V prípade, že ťuknete na tlačítko, ktoré spúšťa funkciu, tak by sa mala
 V prípade, že posúvate sliderom, tak by sa mala ledka na ESPčku postupne rozsvecovať a zhasínať.
 (Ak už LEDku raz ovládate slidrom, do reštartu espčka ju neviete ovládať tlačítkom,
 pozri :ref:`knownIssues`)
-
-Krátky tutoriál / Hello world
--------------------------------
-
-TODO

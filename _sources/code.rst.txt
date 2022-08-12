@@ -54,6 +54,8 @@ Viac o stránke je nasledujúcom odstavci :ref:`client`.
 
    Funkcia, ktorá rieši prijatie správy z websocketu.
    V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu :func:`handleMessage::handleMessage()`.
+   Okrem tohoto, v tejto funkcii sa nachádza aj schválne umiestnený delay,
+   aby mal robot nejjakú latenciu. Prosím, nemažte tieto riadky.
 
    :param port1: prvý port, na ktorý je pripojený motor
    :param port2: druhý port, na ktorý je pripojený motor
