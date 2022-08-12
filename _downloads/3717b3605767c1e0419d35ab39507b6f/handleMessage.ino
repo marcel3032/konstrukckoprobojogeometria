@@ -14,8 +14,23 @@ void doBlink(String args){
   delay(doc["time"]);
 }
 
+void blinkOnTouch(String args){
+  // kvoli posielaniu argumentov na DEBUG log
+  // nahradime uvodzovky apostrofmi
+  args.replace("\"", "\'");
+  sendDebugMessage(DEBUG, "zavolana funkcia doBlink s argumentami: "+args);
+  
+  // rozparsujeme argumenty
+  DynamicJsonDocument doc(1024);
+  deserializeJson(doc, args);
+  
+  extern bool blinking;
+  
+  blinking = !blinking;
+}
+
 // definitions of functions, which you can call from ESP
-void (*functions[])(String) = {doBlink};
+void (*functions[])(String) = {doBlink, blinkOnTouch};
 
 
 void handleMessage(DynamicJsonDocument doc){

@@ -27,7 +27,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     function onMessage(event) {
       let recieved_data = JSON.parse(event.data);
       if(recieved_data.type=="message"){
-        buttons.forEach( b => b.update(recieved_data));
+        input_elements.forEach( b => b.update(recieved_data));
       }
       if(recieved_data.type=="input_changed"){
         port_inputs.forEach( p => p.update(recieved_data));
@@ -143,6 +143,24 @@ const char index_html[] PROGMEM = R"rawliteral(
   	  }
     }
     
+    class BlinkFunctionButton {
+      constructor(function_index){
+        this.function_index = function_index;
+        this.el = $e("div", [["class", "card"]], document.getElementById("content"));
+        this.description = $e("div", [], this.el);
+        
+        this.button = $e("button", [], this.el);
+        this.button.innerHTML = "function: "+function_index;
+        this.button.addEventListener('click', ev => {
+          console.log('{"method": "function", "index":'+this.function_index+', "args":\'{}\'}')
+          websocket.send('{"method": "function", "index":'+this.function_index+', "args":\'{}\'}');
+        });
+      }
+    
+      update(recieved_data){
+  	  }
+    }
+    
     class PortInput{
       constructor(port) {
         this.port = port;
@@ -162,14 +180,13 @@ const char index_html[] PROGMEM = R"rawliteral(
     
     var input_elements = [];
     input_elements.push(new OutputButton(22));
-    input_elements.push(new Slider(13));
     input_elements.push(new Slider(22));
     input_elements.push(new SliderFunctionButton(0));
-    input_elements.push(new MotorSlider(13,22));
+    input_elements.push(new BlinkFunctionButton(1));
+    input_elements.push(new MotorSlider(19,22));
     
     var port_inputs = [];
-    port_inputs.push(new PortInput(32));
-    port_inputs.push(new PortInput(33));
+    port_inputs.push(new PortInput(13));
   </script>
 </body>
 </html>
