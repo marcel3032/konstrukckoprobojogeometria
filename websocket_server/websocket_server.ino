@@ -132,7 +132,7 @@ void setup(){
   });
   
   server.on("/init", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/js", init_js);
+    request->send_P(200, "text/javascript", init_js);
   });
 
   server.begin();
