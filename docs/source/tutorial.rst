@@ -271,7 +271,7 @@ Okrem úprav v javascripte treba tento port pridať aj do kódu k ESPčku.
 V súbore :code:`checkInputs` je úplne na vrchu pole, v ktorom sú napísané všetky porty,
 ktoré ESPčko sleduje a posiela do mobilu:
 
-.. code-blocks:: javascript
+.. code-block:: cpp
 
    int ports[] = {13};
 

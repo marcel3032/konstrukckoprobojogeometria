@@ -19,6 +19,7 @@ Obsah:
    tutorial
    code
    other
+   help
 
 Odkazy:
 --------
