@@ -124,6 +124,8 @@ Keďže je pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory 
 tak máte vyrobený "rebrík", na ktorý viete pripojiť mínus(zem)
 alebo plus z ESPčka a následne na tento rebrík popripájať všetko čo potrebujete.
 
+.. image:: images/ground.jpg
+
 Prepájanie súčiastok
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

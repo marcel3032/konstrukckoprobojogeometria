@@ -25,6 +25,8 @@ Motory a ich ovládanie
 K dispozícii máte 2 motory aj s ich riadiacou jednotkou.
 Táto riadiaca jednotka (motor driver) vie ovládať 2 motory, každý z nich obomi smermi.
 
+.. image:: images/motor-dc.jpg
+
 Vstupné senzory
 ~~~~~~~~~~~~~~~~~~~~~~~
 K dispozícii máte 4 senzory čiary a 4 mikrospínače.
@@ -32,7 +34,12 @@ Senzory čiary vracajú informáciu, či je pred nimi čiara, alebo nie.
 Presnejšie, vracajú digitálnu hodnotu,
 či je odrazené svetlo väčšie ako nejaká prahová hodnota.
 Táto hodnota je nastavovaná trimrom, ktorý je na senzore.
+
+.. image:: images/line-sensor.jpg
+
 Tiež máte k dispozícii 4 mikrospínače, pomocou ktorých viete zisťovať dotyk s prekážkou.
+
+.. image:: images/touch-sensor.jpg
 
 Šasí a stavebné prvky
 ~~~~~~~~~~~~~~~~~~~~~~~
