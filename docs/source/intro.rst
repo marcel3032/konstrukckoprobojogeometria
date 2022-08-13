@@ -17,7 +17,10 @@ Prekážková dráha
 ~~~~~~~~~~~~~~~~~~
 
 V tejto disiplíne má robot za úlohu prejsť cez prekážkovú dráhu od začiatku po koniec.
-Dráha sa skladá z 2 častí. V prvej je trasa označená čiernou páskou na svetlom podklade.
+Dráha sa skladá z 2 častí.
+V prvej je trasa označená čiernou páskou/čiernou fixkou na svetlom podklade.
+Tento svetlý podklad bude zrejme asi 4cm široká papierová maliarska páska,
+tak tomu môžete robota prispôsobiť
 Druhá časť je tvorená "bludiskom", ktorého steny sú z kartónu.
 Bludisko bude mať pravouhlé steny, ktoré budú približne 20cm vysoké.
 Najmenšia vzdialenosť medzi ľubovoľnými stenami bude najmenej 25cm,
