@@ -27,12 +27,12 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
   (:code:`analogRead`) v prípade, že sa používa wifi. :code:`digitalRead` by na týchto pinoch malo fungovať vždy.
 * ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku,
   tak musíte na port 22 zapísať `LOW` a nie `HIGH`. Toto sme sa snažili +- vyriešiť tak,
-  aby sa to správalo rozumne, takže ak nebudete používať čisto naše funkcie,
-  tak by všetko mohlo fungovať +- očakávane.
+  aby sa to správalo rozumne, ale asi ak nebudete používať čisto naše funkcie,
+  tak z toho môže byť kus zmätok, sorry :/
 * Ak chcete z nejakého portu čítať vstup, napríklad si na neho napojiť tlačítko,
   tak aj ak nepotrebujete z neho mať výstup v mobile, tak si ho tam pridajte (najmä do :code:`checkInputs.ino`), keďže tam sa pri inicializácii rieši, aby bol port správne vstupný.
-* V javascripte, ktorý ovláda motory, digitálne a analógové vstupy sú schválne umiestnené časti kódu,
-  ktoré spôsobujú latenciu.
+* V javascripte, ktorý ovláda motory, digitálne a analógové vstupy
+  sú schválne umiestnené časti kódu, ktoré spôsobujú latenciu (oneskorenie).
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none

@@ -63,12 +63,12 @@ tak už ho neviete ovládať ako <code class="code docutils literal notranslate"
 (<code class="code docutils literal notranslate"><span class="pre">analogRead</span></code>) v prípade, že sa používa wifi. <code class="code docutils literal notranslate"><span class="pre">digitalRead</span></code> by na týchto pinoch malo fungovať vždy.</p></li>
 <li><p>ESPčko má prehodené 1 a 0, takže napríklad ak chcete zapnúť vstavanú ledku,
 tak musíte na port 22 zapísať <cite>LOW</cite> a nie <cite>HIGH</cite>. Toto sme sa snažili +- vyriešiť tak,
-aby sa to správalo rozumne, takže ak nebudete používať čisto naše funkcie,
-tak by všetko mohlo fungovať +- očakávane.</p></li>
+aby sa to správalo rozumne, ale asi ak nebudete používať čisto naše funkcie,
+tak z toho môže byť kus zmätok, sorry :/</p></li>
 <li><p>Ak chcete z nejakého portu čítať vstup, napríklad si na neho napojiť tlačítko,
 tak aj ak nepotrebujete z neho mať výstup v mobile, tak si ho tam pridajte (najmä do <code class="code docutils literal notranslate"><span class="pre">checkInputs.ino</span></code>), keďže tam sa pri inicializácii rieši, aby bol port správne vstupný.</p></li>
-<li><p>V javascripte, ktorý ovláda motory, digitálne a analógové vstupy sú schválne umiestnené časti kódu,
-ktoré spôsobujú latenciu.</p></li>
+<li><p>V javascripte, ktorý ovláda motory, digitálne a analógové vstupy
+sú schválne umiestnené časti kódu, ktoré spôsobujú latenciu (oneskorenie).</p></li>
 <li><p>V prípade, že v serial monitore dostanete takýto error:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rst:0x10 (RTCWDT_RTC_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
 configsip: 0, SPIWP:0xee
