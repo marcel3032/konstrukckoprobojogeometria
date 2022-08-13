@@ -144,5 +144,13 @@ LEDky a pípač
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 V prípade, že chcete, môžete použiť aj niekoľko LEDiek a pípač.
+Schéma zapojenia je pomerne jednoduchá:
 
 .. image:: images/circuit-led.png
+
+.. warning::
+
+   LEDku zapájajte vždy s odporom, a nikdy nie bez neho, lebo môžete ESPčko skratovať.
+   
+LEDku viete ovládať aj digitálne (0/1), aj analógovo.
+Pri pípači viete meniť tón tak, že ho ovládate analógovo.
