@@ -33,7 +33,7 @@ K dispozícii máte 4 senzory čiary a 4 mikrospínače.
 Senzory čiary vracajú informáciu, či je pred nimi čiara, alebo nie.
 Presnejšie, vracajú digitálnu hodnotu,
 či je odrazené svetlo väčšie ako nejaká prahová hodnota.
-Táto hodnota je nastavovaná trimrom, ktorý je na senzore.
+Táto prahová hodnota je nastavovaná trimrom, ktorý je na senzore.
 
 .. image:: images/line-sensor.jpg
 
@@ -48,7 +48,7 @@ Dostanete rovné "dosky".
 Na pripájanie súčiastok na dosky, resp. dosiek medzi sebou dostanete "Lká" a "Tčka",
 a rovné diely, tiež s M3 dierami.
 Väčšina súčastok má M3 alebo M2.5 dieru, takže to je odporúčaný spôsob ich spájania.
-Máte k dispozícii dlhé a krátke M3 šrouby, veľkoplošné podložky, matky a zopár samoistných matiek.
+Máte k dispozícii dlhé a krátke M3 šrouby, veľkoplošné podložky, matky, zopár samoistných matiek a zopár šroub a matiek M2,5.
 
 Napájanie
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,12 +60,12 @@ Túto baterku zvláda dobíjať samotné espčko v prípade,
 
 Ovládanie robota
 -----------------
-Na espčku, ktoré je na robotovi je spustený webserver.
-Po pripojení sa na tento server cez (napr.) mobil sa načíta stránka,
+Na espčku, ktoré je na robotovi, je spustený webserver.
+Po pripojení sa na tento server cez (napr.) mobil načíta stránka,
 pomocou ktorej je možné ovládať robota.
 Od robota do pripojeného zariadenia (mobilu) sú posielané informácie o tom,
 ako robot nastavil nejaký výstup, rôzne pomocné výpisy,
 pomocou ktorých môžete robota ladiť a tiež aj informácie zo vstupných senzorov (čiary alebo dotyku).
 
-Niektoré ovládania robota sú schválne mierne oneskorené,
+Niektoré ovládania robota sú schválne mierne oneskorené (okolo 600ms),
 aby dávalo zmysel programovať si vlastné automatizované funkcie.

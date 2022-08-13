@@ -18,6 +18,8 @@ Ukážková schéma zapojenia je tu:
    * v kľude si po sebe skontrolujte to, čo ste zapojili
    * v prípade, že chcete niečo zapojiť inak ako je tu popísané,
      tak to radšej najprv skonzultujte s vedúcimi
+   * Keď odpájate baterku, skúste ju ťahať za konektor
+     a nie za káble, nech ich neodtrhnete.
 
 Motory
 ~~~~~~~~
@@ -37,7 +39,7 @@ tak na druhú -- pomerne priamočiare. Čím menšie napätie je na vstupe, tým
    Vyhnite sa tomu, že bude na oba piny ovládania pripojené nenulové napätie,
    keďže tým môžete zoskratovať motor driver. (Možno je voči tomu odolný, ale neskúšali sme to).
    
-   Najjednoduchší spôsob, ako sa tomu vyhnúť je ovládať motor pomocou našich funkcií.
+   Najjednoduchší spôsob, ako sa tomu vyhnúť, je ovládať motor pomocou našich funkcií.
    
    Motor driver by mal ostať počas celého používania v zásade studený, takže ak je teplý až horúci,
    tak asi máte niečo zle zapojené, najpravdepodobnejšie sú to skratované prívodné káble k motorom.
@@ -120,7 +122,7 @@ ale príďte nám to povedať (minimálne preto, že máme pájkovačku :D).
 Spoločné plus a mínus(zem)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Keďže je pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory čiary a vypínače),
+Keďže pomerne veľa súčiastok sa pripája na plus a mínus(zem) (senzory čiary a vypínače),
 tak máte vyrobený "rebrík", na ktorý viete pripojiť mínus(zem)
 alebo plus z ESPčka a následne na tento rebrík popripájať všetko čo potrebujete.
 
@@ -129,7 +131,7 @@ alebo plus z ESPčka a následne na tento rebrík popripájať všetko čo potre
 Prepájanie súčiastok
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Máte k dispozícii káble samica-samica na prepájanie takých pinov ako sú na ESPčku.
+Máte k dispozícii káble samica-samica na prepájanie takých pinov, ako sú na ESPčku.
 Potom máte káble, ktoré majú na jednom konci 4,8mm faston konektor a na druhom samicu,
 ktorá pasuje na piny ESPčka (na prepájanie :ref:`mikrospínačov z ESPčkom <dotyk>`).
 

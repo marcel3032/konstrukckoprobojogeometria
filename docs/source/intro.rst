@@ -10,14 +10,15 @@ Popíšme teraz presnejšie tieto disciplíny:
 Disciplíny
 ------------
 
+Predpokladáme, že všetky súťaže sa budú konať na dlažbe v spoločenskej,
+takže pri výrobe kolies myslite na dostatočnú protišmykovosť.
+
 Prekážková dráha
 ~~~~~~~~~~~~~~~~~~
 
 V tejto disiplíne má robot za úlohu prejsť cez prekážkovú dráhu od začiatku po koniec.
-Dráha sa skladá z 2 častí. V prvej je trasa označená čiernou páskou na svetlom podklade
-druhá je tvorená "bludiskom", ktorého steny sú z kartónu.
-Na trase vyznačenej čiernou páskou sa môžu vyskytnúť prekážky, ktoré znamenajú,
-že robot musí prekážku obísť a nemôže cez ňu pokračovať ďalej po čiare.
+Dráha sa skladá z 2 častí. V prvej je trasa označená čiernou páskou na svetlom podklade.
+Druhá časť je tvorená "bludiskom", ktorého steny sú z kartónu.
 Bludisko bude mať pravouhlé steny, ktoré budú približne 20cm vysoké.
 Najmenšia vzdialenosť medzi ľubovoľnými stenami bude najmenej 25cm,
 takže s tým rátajte pri stavbe robota.
@@ -38,5 +39,5 @@ Súťaž krásy
 
 V tejto disciplíne sa bude hodnotiť estetická stránka robota.
 Vašou úlohou bude odprezentovať robota, aby vynikla jeho krása
-(príklad: chodenie po móle ako modelka).
+(príklad: chodenie po móle ako modelka, tanečná zostava, ...).
 Celé "vystúpenie" by malo trvať maximálne 60s.

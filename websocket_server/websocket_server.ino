@@ -108,7 +108,7 @@ void setup(){
   Serial.begin(115200);
 
   pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, LOW);
+  digitalWrite(LED_PIN, HIGH);
   setInputsAsInput();
 
   Serial.println();
