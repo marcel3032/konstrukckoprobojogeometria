@@ -21,6 +21,11 @@ Najprv si potrebujete nainštalovať ESP32 dosku a knižnice.
 Inštalácia ESP32 dosky
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+Najprv si treba pridať :code:`Additional Board Manager URLs`.
+To urobíte tak, že idete do :code:`File -> Preferences`.
+
+Tam pridáte do poľa :code:`Additional Board Manager URLs` URLku: :code:`https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
+
 Otvorte si Board Manager. Pre v1.* vyzerá zhruba takto:
 
 .. image:: images/board-manager.png

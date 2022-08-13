@@ -73,6 +73,7 @@ V prípade, že počas hry budeme niečo podstatné pridávať/meniť v dokument
 +=======+============================================+
 | 10:30 | Ok, nie som retardovaný, ten bug je asi ok |
 | 10:52 | Updaty tipov o tom, čo je v spoločenskej   |
+| 11:14 | Update inštalačného návodu                 |
 |       |                                            |
 |       |                                            |
 |       |                                            |
