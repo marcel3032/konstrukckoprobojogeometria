@@ -68,19 +68,19 @@ Updates
 
 V prípade, že počas hry budeme niečo podstatné pridávať/meniť v dokumentácii, tak to tu poznačíme, aj s časom, kedy sa to stalo.
 
-+-------+--------------------------------------------+
-| Čas   | Čo                                         |
-+=======+============================================+
-| 10:30 | Ok, nie som retardovaný, ten bug je asi ok |
-| 10:52 | Updaty tipov o tom, čo je v spoločenskej   |
-| 11:14 | Update inštalačného návodu                 |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-|       |                                            |
-+-------+--------------------------------------------+
++-------+-----------------------------------------------+
+| Čas   | Čo                                            |
++=======+===============================================+
+| 10:30 | Ok, nie som retardovaný, ten bug je asi ok    |
+| 10:52 | Updaty tipov o tom, čo je v spoločenskej      |
+| 11:14 | Update inštalačného návodu                    |
+| 11:30 | Eh, som retard, už som fixol ten syntax error | 
+|       |                                               |
+|       |                                               |
+|       |                                               |
+|       |                                               |
+|       |                                               |
+|       |                                               |
+|       |                                               |
++-------+-----------------------------------------------+
 
