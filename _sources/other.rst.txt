@@ -49,3 +49,18 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
      ets Jun  8 2016 00:22:57
    
   Tak je to zrejme spôsobené pošahaným napájaním, skúste ESPčko natvrdo odpojiť od akéhokoľvek zdroja energie a opäť pripojiť.
+  
+.. _tips:
+
+Tipy
+--------------
+
+Do tejto časti budú pribúdať tipy a triky, na ktoré prídeme počas hry,
+tak si to skúste raz za čas refreshnúť.
+
+* Môžete premýšľať rýchlejšie
+
+Updates
+-----------
+
+V prípade, že počas hry budeme niečo podstatné pridávať/meniť v dokumentácii, tak to tu poznačíme, aj s časom, kedy sa to stalo.
