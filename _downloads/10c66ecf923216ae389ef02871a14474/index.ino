@@ -60,8 +60,10 @@ const char index_html[] PROGMEM = R"rawliteral(
         this.button = $e("button", [], this.el);
         this.button.innerHTML = "port: "+port;
         this.button.addEventListener('click', ev => {
-          let send_value = 1 - this.value;
-          websocket.send('{"port1":'+this.port+', "method":"digital", "value":'+send_value+'}');
+          setTimeout( () => {
+            let send_value = 1 - this.value;
+            websocket.send('{"port1":'+this.port+', "method":"digital", "value":'+send_value+'}');
+          }, delay_time);
         });
       }
     
@@ -79,8 +81,10 @@ const char index_html[] PROGMEM = R"rawliteral(
         this.slider = $e("input", [["type", "range"], ["min", "0"], ["max", "255"]], this.el);
         this.slider.value = 0;
         this.slider.addEventListener('input', ev => {
-          let send_value = this.slider.value;
-          websocket.send('{"port1":'+this.port+', "method":"analog", "value":'+send_value+'}');
+          setTimeout( () => {
+            let send_value = this.slider.value;
+            websocket.send('{"port1":'+this.port+', "method":"analog", "value":'+send_value+'}');
+          }, delay_time);
         });
       }
     
@@ -109,9 +113,11 @@ const char index_html[] PROGMEM = R"rawliteral(
         this.slider = $e("input", [["type", "range"], ["min", "-255"], ["max", "255"]], this.el);
         this.slider.value = 0;
         this.slider.addEventListener('input', ev => {
-          let send_value = this.slider.value;
-          console.log('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
-          websocket.send('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+          setTimeout( () => {
+            let send_value = this.slider.value;
+            console.log('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+            websocket.send('{"port1":'+this.port1+', "port2":'+this.port2+', "method":"motor", "value":'+send_value+'}');
+          }, delay_time);
         });
       }
     
@@ -183,6 +189,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     var input_elements = [];
     input_elements.push(new OutputButton(22));
     input_elements.push(new Slider(22));
+    input_elements.push(new Slider(13));
     input_elements.push(new SliderFunctionButton(0));
     input_elements.push(new BlinkFunctionButton(1));
     input_elements.push(new MotorSlider(19,22));

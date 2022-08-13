@@ -54,8 +54,6 @@ Viac o stránke je nasledujúcom odstavci :ref:`client`.
 
    Funkcia, ktorá rieši prijatie správy z websocketu.
    V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu :func:`handleMessage::handleMessage()`.
-   Okrem tohoto, v tejto funkcii sa nachádza aj schválne umiestnený delay,
-   aby mal robot nejjakú latenciu. Prosím, nemažte tieto riadky.
 
    :param port1: prvý port, na ktorý je pripojený motor
    :param port2: druhý port, na ktorý je pripojený motor
@@ -153,6 +151,9 @@ Stránka a robot spolu komunikujú cez websocket.
 Komunikácia prebieha obojsmerne. Od klienta chodia robotovi príkazy
 na zmenu výstupnej hodnoty pinov a od robota informácie o úspešne zmenenej výstupnej hodnote,
 zmenenej vstupnej hodnote a pomocné debugovacie výpisy. 
+
+V súbore :code:`init_js` sa nachádza aj dĺžka schválne umiestneného delayu,
+aby mal robot nejakú latenciu. Prosím, nemažte tieto riadky.
 
 
 .. js:function:: init_js.initWebSocket()

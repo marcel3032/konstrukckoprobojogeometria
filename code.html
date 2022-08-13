@@ -123,9 +123,7 @@ Pošle do prehliadača informáciu o hodnote na vstupe.</p>
 <dt id="_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t">
 <span id="_CPPv3N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="_CPPv2N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t"></span><span id="websocket_server::handleWebSocketMessage__voidP.uint8_tP.s"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">handleWebSocketMessage</code><span class="sig-paren">(</span>void *<em>arg</em>, uint8_t *<em>data</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server22handleWebSocketMessageEPvP7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Funkcia, ktorá rieši prijatie správy z websocketu.
-V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.
-Okrem tohoto, v tejto funkcii sa nachádza aj schválne umiestnený delay,
-aby mal robot nejjakú latenciu. Prosím, nemažte tieto riadky.</p>
+V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -261,6 +259,8 @@ ale máme pocit, že prednastavených 500ms je +- fajn)</p>
 Komunikácia prebieha obojsmerne. Od klienta chodia robotovi príkazy
 na zmenu výstupnej hodnoty pinov a od robota informácie o úspešne zmenenej výstupnej hodnote,
 zmenenej vstupnej hodnote a pomocné debugovacie výpisy.</p>
+<p>V súbore <code class="code docutils literal notranslate"><span class="pre">init_js</span></code> sa nachádza aj dĺžka schválne umiestneného delayu,
+aby mal robot nejakú latenciu. Prosím, nemažte tieto riadky.</p>
 <dl class="function">
 <dt id="init_js.initWebSocket">
 <code class="sig-prename descclassname">init_js.</code><code class="sig-name descname">initWebSocket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#init_js.initWebSocket" title="Permalink to this definition">¶</a></dt>

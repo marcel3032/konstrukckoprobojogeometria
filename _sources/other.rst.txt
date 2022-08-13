@@ -31,6 +31,8 @@ Nasleduje zoznam vecí, o ktorých vieme, že nefungujú, resp. možno nefunguj�
   tak by všetko mohlo fungovať +- očakávane.
 * Ak chcete z nejakého portu čítať vstup, napríklad si na neho napojiť tlačítko,
   tak aj ak nepotrebujete z neho mať výstup v mobile, tak si ho tam pridajte (najmä do :code:`checkInputs.ino`), keďže tam sa pri inicializácii rieši, aby bol port správne vstupný.
+* V javascripte, ktorý ovláda motory, digitálne a analógové vstupy sú schválne umiestnené časti kódu,
+  ktoré spôsobujú latenciu.
 * V prípade, že v serial monitore dostanete takýto error:
 
   .. code-block:: none

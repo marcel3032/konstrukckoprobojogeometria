@@ -74,7 +74,6 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   AwsFrameInfo *info = (AwsFrameInfo*)arg;
   if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
     data[len] = 0;
-    delay(450);
     Serial.printf("recieved: (%s)\n", data);
     DynamicJsonDocument doc(1024);
     deserializeJson(doc, data);
