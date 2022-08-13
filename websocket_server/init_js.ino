@@ -1,7 +1,8 @@
-const delay_time = 600;
 // js, ktorý inicializuje websocket
 
 const char init_js[] PROGMEM = R"rawliteral(
+const delay_time = 600;
+
 var gateway = `ws://${window.location.hostname}/ws`;
 var websocket;
 window.addEventListener('load', (e) => {
