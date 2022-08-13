@@ -1,3 +1,4 @@
+const delay_time = 600;
 // js, ktorý inicializuje websocket
 
 const char init_js[] PROGMEM = R"rawliteral(

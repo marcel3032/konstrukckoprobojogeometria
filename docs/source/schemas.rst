@@ -153,4 +153,4 @@ Schéma zapojenia je pomerne jednoduchá:
    LEDku zapájajte vždy s odporom, a nikdy nie bez neho, lebo môžete ESPčko skratovať.
    
 LEDku viete ovládať aj digitálne (0/1), aj analógovo.
-Pri pípači viete meniť tón tak, že ho ovládate analógovo.
+Pri pípači viete trochu meniť tón a zároveň hlasitosť tak, že ho ovládate analógovo.

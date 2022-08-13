@@ -123,4 +123,5 @@ Teraz si otvorte váš obľúbený rozumne moderný browser (napríklad chrome/f
 a otvorte :code:`192.168.4.1` (to je adresa ESPčka).
 
 Okrem iného, sa Vám zobrazí tlačítko, ktoré ovláda port `22`.
-Teraz keď ťukáte na tlačítko, ktoré ovláda port, tak by sa mala ledka na ESPčku zapínať a vypínať.
+Teraz keď ťukáte na tlačítko, ktoré ovláda port, tak by sa mala ledka na ESPčku zapínať a vypínať
+(so zhruba 600ms oneskorením).

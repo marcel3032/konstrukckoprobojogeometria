@@ -67,5 +67,5 @@ Od robota do pripojeného zariadenia (mobilu) sú posielané informácie o tom,
 ako robot nastavil nejaký výstup, rôzne pomocné výpisy,
 pomocou ktorých môžete robota ladiť a tiež aj informácie zo vstupných senzorov (čiary alebo dotyku).
 
-Akékoľvek ovládanie robota je schválne mierne oneskorené,
+Niektoré ovládania robota sú schválne mierne oneskorené,
 aby dávalo zmysel programovať si vlastné automatizované funkcie.
