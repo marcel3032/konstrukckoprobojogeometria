@@ -61,6 +61,7 @@ tak si to skúste raz za čas refreshnúť.
 * Môžete premýšľať rýchlejšie
 * Ak sa Vám povoľujú matky, tak matky M3 máme aj samoistné (také vyššie s gumičkou),
   alebo ich môžete zakvapkať lakom na nechty.
+* V spoločenskej vľavo sú pájkovačky, kliešte, lepidlá, laky na nechty, špajdle, gumičky, vrchnáčiky od fliaš, lepiace pásky, 3D pero a také.
 
 Updates
 -----------
@@ -71,6 +72,7 @@ V prípade, že počas hry budeme niečo podstatné pridávať/meniť v dokument
 | Čas   | Čo                                         |
 +=======+============================================+
 | 10:30 | Ok, nie som retardovaný, ten bug je asi ok |
+| 10:52 | Updaty tipov o tom, čo je v spoločenskej   |
 |       |                                            |
 |       |                                            |
 |       |                                            |
