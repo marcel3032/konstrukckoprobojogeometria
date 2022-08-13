@@ -59,8 +59,25 @@ Do tejto časti budú pribúdať tipy a triky, na ktoré prídeme počas hry,
 tak si to skúste raz za čas refreshnúť.
 
 * Môžete premýšľať rýchlejšie
+* Ak sa Vám povoľujú matky, tak matky M3 máme aj samoistné (také vyššie s gumičkou),
+  alebo ich môžete zakvapkať lakom na nechty.
 
 Updates
 -----------
 
 V prípade, že počas hry budeme niečo podstatné pridávať/meniť v dokumentácii, tak to tu poznačíme, aj s časom, kedy sa to stalo.
+
++-------+--------------------------------------------+
+| Čas   | Čo                                         |
++=======+============================================+
+| 10:30 | Ok, nie som retardovaný, ten bug je asi ok |
+|       |                                            |
+|       |                                            |
+|       |                                            |
+|       |                                            |
+|       |                                            |
+|       |                                            |
+|       |                                            |
+|       |                                            |
++-------+--------------------------------------------+
+

@@ -42,7 +42,7 @@ Viac o stránke je nasledujúcom odstavci :ref:`client`.
 
 .. cpp:function:: void websocket_server::motorWrite(int port1, int port2, int value)
 
-   Funkcia, ktorá ovláda motor. 
+   Funkcia, ktorá ovláda *jeden* motor. 
 
    :param port1: prvý port, na ktorý je pripojený motor
    :param port2: druhý port, na ktorý je pripojený motor
@@ -55,9 +55,6 @@ Viac o stránke je nasledujúcom odstavci :ref:`client`.
    Funkcia, ktorá rieši prijatie správy z websocketu.
    V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu :func:`handleMessage::handleMessage()`.
 
-   :param port1: prvý port, na ktorý je pripojený motor
-   :param port2: druhý port, na ktorý je pripojený motor
-   :param value: hodnota, ktorou sa má hýbať motor. Očakávaný rozsah je -255 až +255. 
    :return: void
 
 
@@ -213,7 +210,7 @@ aby mal robot nejakú latenciu. Prosím, nemažte tieto riadky.
 
 .. js:class:: index.MotorSlider(port1, port2)
 
-   Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda motor, ktorý je do ESP pripojený na 2 porty.
+   Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda *jeden* motor, ktorý je do ESP pripojený na 2 porty.
    
    :param port1: Prvý port, na ktorý je pripojený motor.
    

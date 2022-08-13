@@ -104,7 +104,7 @@ Pošle do prehliadača informáciu o hodnote na vstupe.</p>
 <dl class="function">
 <dt id="_CPPv4N16websocket_server10motorWriteEiii">
 <span id="_CPPv3N16websocket_server10motorWriteEiii"></span><span id="_CPPv2N16websocket_server10motorWriteEiii"></span><span id="websocket_server::motorWrite__i.i.i"></span>void <code class="sig-prename descclassname">websocket_server<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">motorWrite</code><span class="sig-paren">(</span>int <em>port1</em>, int <em>port2</em>, int <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16websocket_server10motorWriteEiii" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Funkcia, ktorá ovláda motor.</p>
+<dd><p>Funkcia, ktorá ovláda <em>jeden</em> motor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -125,15 +125,8 @@ Pošle do prehliadača informáciu o hodnote na vstupe.</p>
 <dd><p>Funkcia, ktorá rieši prijatie správy z websocketu.
 V zásade jediné, čo Vás z nej musí zaujímať je, že zavolá funkciu <code class="xref py py-func docutils literal notranslate"><span class="pre">handleMessage::handleMessage()</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>port1</strong> – prvý port, na ktorý je pripojený motor</p></li>
-<li><p><strong>port2</strong> – druhý port, na ktorý je pripojený motor</p></li>
-<li><p><strong>value</strong> – hodnota, ktorou sa má hýbať motor. Očakávaný rozsah je -255 až +255.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>void</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
 </dd>
 </dl>
 </dd></dl>
@@ -366,7 +359,7 @@ aby mal robot nejakú latenciu. Prosím, nemažte tieto riadky.</p>
 <dl class="class">
 <dt id="index.MotorSlider">
 <em class="property">class </em><code class="sig-prename descclassname">index.</code><code class="sig-name descname">MotorSlider</code><span class="sig-paren">(</span><em class="sig-param">port1</em>, <em class="sig-param">port2</em><span class="sig-paren">)</span><a class="headerlink" href="#index.MotorSlider" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda motor, ktorý je do ESP pripojený na 2 porty.</p>
+<dd><p>Trieda, ktorá vyrába slider (posúvatko), ktoré ovláda <em>jeden</em> motor, ktorý je do ESP pripojený na 2 porty.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
